@@ -5,11 +5,11 @@ const useErrorNotifier = () => {
   const { t } = useTranslation();
 
   const notFound = {
-    message: t('notification_api.notification_api_notFound'),
+    message: t('notification_api.notFound'),
   };
 
   const notFillingError = {
-    message: t('notification_api.notification_api_notFillingError'),
+    message: t('notification_api.notFillingError'),
   };
 
   const errorNotifier = ({ errorStatus = 409 }) => {

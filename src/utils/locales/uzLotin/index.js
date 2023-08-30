@@ -8,7 +8,7 @@ const uzLotin = {
     report_title: 'Hisobotlar',
     report: 'Hisobot',
   },
-  locale_modal: {
+  local_modal: {
     title: "Tilni O'zgartirish",
     russian: 'Русский',
     english: 'English',

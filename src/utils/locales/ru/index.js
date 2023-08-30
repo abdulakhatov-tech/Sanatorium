@@ -8,7 +8,7 @@ const ru = {
     report_title: 'Отчеты',
     report: 'Отчет',
   },
-  locale_modal: {
+  local_modal: {
     title: 'Изменение языка',
     russian: 'Русский',
     english: 'English',

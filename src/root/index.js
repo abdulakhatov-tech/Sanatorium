@@ -8,13 +8,14 @@ import i18next from 'i18next';
 // ------------------------------ Internal Imports ------------------------------
 import Login from '../components/Login';
 import { en, ru, uzKrill, uzLotin } from '../utils/locales';
+import Navbar from '../components/Navbar';
 
 const Root = () => {
   const { lang } = useSelector((state) => state.locale);
 
   useEffect(() => {
     if (!localStorage.getItem('locale')) {
-      localStorage.setItem('locale', 'uzLotin');
+      localStorage.setItem('locale', 'en');
     }
   }, []);
 
@@ -44,7 +45,8 @@ const Root = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Navbar />} />
+      {/* <Route path="/" element={<Login />} /> */}
     </Routes>
   );
 };
