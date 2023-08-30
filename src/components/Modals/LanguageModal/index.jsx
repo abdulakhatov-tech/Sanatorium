@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalContainer } from './style';
+import { useSegmented } from '../../../tools';
 import { CenteredWrapper } from '../../../tools/styles';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import { useSegmented } from '../../../tools/segmented-api';
 import { setLangModalVisibility } from '../../../store/modalSlice';
 
 const LanguageModal = () => {

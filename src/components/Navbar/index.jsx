@@ -6,17 +6,18 @@ import { Outlet, useNavigate } from 'react-router-dom';
 // ------------------------------ Internal Imports ------------------------------
 // import Parameters from '../Reports/Parameters';
 import { LanguageModal, LogoutModal, SettingsModal } from '../Modals';
-import { useDropDown } from '../../utils/dropdown-api';
 import { Wrapper } from './style';
 import {
   setLangModalVisibility,
   setSettingModalVisibility,
   setLogoutModalVisibility,
 } from '../../store/modalSlice';
+import { useDropDown } from '../../tools';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { loginItems } = useDropDown();
 
   /* ------------------- User Modal Functions ------------------- */

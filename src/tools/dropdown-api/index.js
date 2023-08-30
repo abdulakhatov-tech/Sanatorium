@@ -4,9 +4,9 @@ import {
   LogoutOutlined,
 } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import { DropDownContentWrapper } from '../../tools/styles';
+import { DropDownContentWrapper } from '../styles';
 
-export const useDropDown = () => {
+const useDropDown = () => {
   const { t } = useTranslation();
 
   const customIconStyle = {
@@ -49,3 +49,5 @@ export const useDropDown = () => {
 
   return { loginItems };
 };
+
+export default useDropDown;

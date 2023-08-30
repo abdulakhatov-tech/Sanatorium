@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Avatar } from 'antd';
 
-export const useSegmented = () => {
+const useSegmented = () => {
   const { t } = useTranslation();
 
   // ====================== LOCALE OPTIONS ======================
@@ -95,3 +95,5 @@ export const useSegmented = () => {
 
   return { localeOptions, userOptions, moveUserOptions };
 };
+
+export default useSegmented;
