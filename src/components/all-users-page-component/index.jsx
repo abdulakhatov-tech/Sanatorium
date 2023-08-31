@@ -1,16 +1,17 @@
+// ------------------------------ External Imports ------------------------------
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 
+// ------------------------------ Internal Imports ------------------------------
 import { CenteredWrapper } from '../../tools/styles';
 import { ArrowBack, Loading, Table } from '../../tools';
 import { Wrapper } from './style';
 import { UsersService } from '../../services/users.service';
 
-const { REACT_APP_BASE_URL: url } = process.env;
-
 const AllUsersPageComponent = () => {
   const [users, setUsers] = useState([]);
 
+  /* ------------------- Get All Users ------------------- */
   const { isLoading } = useQuery(
     'getAllUsers',
     () => {

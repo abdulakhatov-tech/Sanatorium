@@ -15,15 +15,18 @@ const Login = () => {
   const navigate = useNavigate();
   const signIn = useSignIn();
 
+  /* ------------------- States ------------------- */
   const [warningAnimation, setWarningAnimation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const numberRef = useRef();
   const passwordRef = useRef();
 
+  /* ------------------- Custom hooks ------------------- */
   const axios = useAxios();
   const { errorNotifier } = useErrorNotifier();
 
+  /* ------------------- To play Button animation ------------------- */
   const playAnimation = () => {
     setWarningAnimation(true);
     setTimeout(() => {
@@ -31,10 +34,12 @@ const Login = () => {
     }, 1000);
   };
 
+  /* ------------------- Keyboard detection ------------------- */
   const onKeyDetect = (e) => {
     if (e.key === 'Enter' || e.type === 'click') return onAuth();
   };
 
+  /* ------------------- To check if the user signed up ------------------- */
   const onAuth = async () => {
     if (loading) return;
     var reg = new RegExp('^[0-9]$');
@@ -79,6 +84,7 @@ const Login = () => {
     navigate('/');
   };
 
+  /* ------------------- Format User Phone Number ------------------- */
   const formatPhoneNumber = (value) => {
     if (!value) return value;
     const phoneNumber = value.replace(/[^\d]/g, '');
