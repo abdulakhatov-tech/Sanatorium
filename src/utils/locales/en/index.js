@@ -1,6 +1,6 @@
 const en = {
   home_page: {
-    title: 'Secions',
+    title: 'Sections',
     all_users_section: 'All users',
     half_users_section: 'Half time',
     up_users_section: 'Time up',

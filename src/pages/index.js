@@ -1,0 +1,14 @@
+export { default as HomePage } from './home';
+export { default as AllUsersPage } from './all-users';
+export { default as HalfTimePage } from './half-time';
+export { default as EndTimePage } from './end-time';
+export { default as BuildingTypesPage } from './building-types/building-types';
+export { default as OrdinaryRoomsPage } from './building-types/ordinary-rooms/ordinary-rooms';
+export { default as SecondBuildingPage } from './building-types/ordinary-rooms/second-building';
+export { default as FourthBuildingPage } from './building-types/ordinary-rooms/fourth-building';
+export { default as SixthBuildingPage } from './building-types/ordinary-rooms/sixth-building';
+export { default as LuxuryRoomsPage } from './building-types/luxury-rooms/luxury-rooms';
+export { default as ThirdBuildingPage } from './building-types/luxury-rooms/third-building';
+export { default as FifthBuildingPage } from './building-types/luxury-rooms/fifth-building';
+export { default as CottagesPage } from './building-types/cottages';
+export { default as ReportsPage } from './reports';

@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const { REACT_APP_BASE_URL } = process.env;
+export const API_URL = `${process.env.REACT_APP_BASE_URL}/api`;
 
 export const useAxios = () => {
   return async ({ url, method = 'GET', body, headers }) => {
     return await axios({
-      url: `${REACT_APP_BASE_URL}${url}`,
+      url: `${API_URL}${url}`,
       method,
       data: JSON.stringify({
         ...body,
@@ -20,4 +20,21 @@ export const useAxios = () => {
       .then((response) => response)
       .catch((error) => error);
   };
+};
+
+export const $axios = async ({ url, method = 'GET', body, headers }) => {
+  return await axios({
+    url: url,
+    method,
+    data: JSON.stringify({
+      ...body,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Allow-Control-Origin': true,
+      ...headers,
+    },
+  })
+    .then((response) => response)
+    .catch((error) => error);
 };

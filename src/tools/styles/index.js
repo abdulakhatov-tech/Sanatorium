@@ -31,20 +31,44 @@ export const CardWrapper = styled.div`
   margin: 30px auto;
   width: fit-content;
   display: flex;
-  gap: 150px;
+  gap: 100px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 884px) {
     gap: 75px;
+    margin: 25px auto;
+  }
+
+  @media (max-width: 710px) {
+    gap: 50px;
+    margin: 20px auto;
+  }
+
+  @media (max-width: 650px) {
+    gap: 37.5px;
+    margin: 18px auto;
+  }
+
+  @media (max-width: 550px) {
+    gap: 30px;
+    margin: 15px auto;
   }
 
   @media (max-width: 500px) {
-    gap: 37.5px;
+    gap: 25px;
+    margin: 13px auto;
   }
 
-  @media (max-width: 300px) {
+  @media (max-width: 450px) {
+    gap: 20px;
+    margin: 11px auto;
+  }
+
+  @media (max-width: 330px) {
     flex-direction: column;
     gap: 10px;
     margin: 10px auto;
+    width: 100%;
+    padding: 0 30px;
   }
 `;
 

@@ -9,6 +9,8 @@ import i18next from 'i18next';
 import Login from '../components/Login';
 import { en, ru, uzKrill, uzLotin } from '../utils/locales';
 import Navbar from '../components/Navbar';
+import { RequireAuth } from 'react-auth-kit';
+import { paths } from '../utils/locales/paths';
 
 const Root = () => {
   const { lang } = useSelector((state) => state.locale);
@@ -45,8 +47,38 @@ const Root = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navbar />} />
-      {/* <Route path="/" element={<Login />} /> */}
+      <Route
+        path="/"
+        element={
+          <RequireAuth loginPath={'/login'}>
+            <Navbar />
+          </RequireAuth>
+        }
+      >
+        {paths?.map(({ id, Component, path, hasChild, children }) => {
+          return !hasChild ? (
+            <Route key={id} path={path} element={<Component />} />
+          ) : (
+            <Route key={id} path={path} element={<Component />}>
+              {children.map(({ id, Component, path, hasChild, children }) => {
+                return !hasChild ? (
+                  <Route key={id} path={path} element={<Component />} />
+                ) : (
+                  <Route Route key={id} path={path} element={<Component />}>
+                    {children.map(
+                      ({ id, Component, path, hasChild, children }) => (
+                        <Route key={id} path={path} element={<Component />} />
+                      )
+                    )}
+                  </Route>
+                );
+              })}
+            </Route>
+          );
+        })}
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<h1>Not found</h1>} />
     </Routes>
   );
 };
