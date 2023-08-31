@@ -1,16 +1,16 @@
 // ------------------------------ External Imports ------------------------------
+import i18next from 'i18next';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RequireAuth } from 'react-auth-kit';
 import { Route, Routes } from 'react-router-dom';
 import { initReactI18next } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import i18next from 'i18next';
 
 // ------------------------------ Internal Imports ------------------------------
-import Login from '../components/Login';
-import { en, ru, uzKrill, uzLotin } from '../utils/locales';
+import { paths } from '../utils/paths';
 import Navbar from '../components/Navbar';
-import { RequireAuth } from 'react-auth-kit';
-import { paths } from '../utils/locales/paths';
+import { LoginPage, RegisterPage } from '../pages';
+import { en, ru, uzKrill, uzLotin } from '../utils/locales';
 
 const Root = () => {
   const { lang } = useSelector((state) => state.locale);
@@ -77,7 +77,8 @@ const Root = () => {
           );
         })}
       </Route>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<h1>Not found</h1>} />
     </Routes>
   );

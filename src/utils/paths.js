@@ -7,14 +7,16 @@ import {
   FifthBuildingPage,
   FourthBuildingPage,
   HalfTimePage,
+  LoginPage,
   LuxuryRoomsPage,
   OrdinaryRoomsPage,
+  RegisterPage,
   ReportsPage,
   SecondBuildingPage,
   SixthBuildingPage,
   ThirdBuildingPage,
-} from '../../pages';
-const Home = lazy(() => import('../../pages/home'));
+} from '../pages';
+const Home = lazy(() => import('../pages/home'));
 
 export const paths = [
   {

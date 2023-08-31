@@ -1,4 +1,71 @@
 const en = {
+  meta_tag: {
+    home_page: {
+      title: 'Sanatorium',
+      description:
+        'This website is used to receive clients in the sanatorium, place them in rooms and make reservations',
+    },
+    all_users_page: {
+      title: 'All Clients | Sanatorium',
+      description: 'Here we can see all clients',
+    },
+    half_time_page: {
+      title: 'Half Time | Sanatorium',
+      description: 'Here we can see all half time clients',
+    },
+    end_time_page: {
+      title: 'End Time | Sanatorium',
+      description: 'Here we can see all time up clients',
+    },
+    report_page: {
+      title: 'Reports | Sanatorium',
+      description: 'Here we can see all reports about clients',
+    },
+    building_types_page: {
+      title: 'Building Types | Sanatorium',
+      description: 'Here we can see all building types',
+    },
+    ordinary_rooms_page: {
+      title: 'Ordinary Rooms | Sanatorium',
+      description: 'Here we can see all ordinary rooms',
+    },
+    luxury_rooms_page: {
+      title: 'Luxury Rooms | Sanatorium',
+      description: 'Here we can see all luxury rooms',
+    },
+    cottages_page: {
+      title: 'Cottages | Sanatorium',
+      description: 'Here we can see all cottages',
+    },
+    building_2: {
+      title: '2-Building | Sanatorium',
+      description:
+        'Here we can seel all ordinary rooms of one-story 2-building',
+    },
+    building_4: {
+      title: '4-Building | Sanatorium',
+      description:
+        'Here we can seel all ordinary rooms of one-story 4-building',
+    },
+    building_6: {
+      title: '6-Building | Sanatorium',
+      description:
+        'Here we can seel all ordinary rooms of a three-story 6-building',
+    },
+    building_3: {
+      title: '3-Building | Sanatorium',
+      description: 'Here we can seel all luxury rooms of one-story 3-building',
+    },
+    building_5: {
+      title: '5-Building | Sanatorium',
+      description:
+        'Here we can seel all luxury rooms of a two-story 5-building',
+    },
+    login_page: {
+      title: 'Auth | Sanatorium',
+      description: 'Here is Sign-In Page',
+    },
+  },
   home_page: {
     title: 'Sections',
     all_users_section: 'All users',
@@ -36,7 +103,6 @@ const en = {
     surname: 'Surname',
     version: 'version',
   },
-
   building_control_page: {
     title: 'Building types',
     ordinary_rooms: 'Ordinary Rooms',
@@ -44,19 +110,16 @@ const en = {
     cottages: 'Cottages',
     building: 'Building',
   },
-
   login_page: {
     title: 'Hello again!',
     description: 'We provide better service every day than yesterday',
     password_placeholder: 'Your Password',
     button: 'Login',
   },
-
   notification_api: {
     notFound: 'Password or PhoneNumber is wrong!',
     notFillingError: 'Please fill all fields!',
   },
-
   users_table: {
     full_name: 'Full Name',
     phone_number: 'Phone Number',
@@ -72,12 +135,10 @@ const en = {
     action: 'Action',
     go_to: 'Go to',
   },
-
   empty_places: {
     room: 'Room',
     floor: 'Floor',
   },
-
   reports_page: {
     date_range: 'Date range',
     date_range_fill_all_fields: 'Please, select range date!',
@@ -157,7 +218,6 @@ const en = {
       pay_by_card_error: 'Please, enter pay by card!',
     },
   },
-
   tooltip: {
     empty_room: 'Empty room',
     booked_room: 'Booked room',

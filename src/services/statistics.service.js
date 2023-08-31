@@ -7,7 +7,7 @@ export const StatisticsService = {
   /* ------------------- Get Statistics ------------------- */
   async getStatistics() {
     const { data } = await $axios({
-      url: `${getUrl('statistics')}`,
+      url: getUrl('statistics'),
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

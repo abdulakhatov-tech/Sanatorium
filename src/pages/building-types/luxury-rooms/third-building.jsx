@@ -1,7 +1,27 @@
-import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 const ThirdBuildingPage = () => {
-  return <div>ThirdBuildingPage</div>;
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          {t('meta_tag.building_3.title') || '3-Building | Sanatorium'}
+        </title>
+        <meta
+          name="description"
+          content={
+            t('meta_tag.building_3.description') ||
+            'Here we can seel all luxury rooms of one-story 3-building'
+          }
+        />
+      </Helmet>
+      <h1>ThirdBuildingPage</h1>
+    </>
+  );
 };
 
 export default ThirdBuildingPage;

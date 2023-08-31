@@ -16,6 +16,8 @@ const useErrorNotifier = () => {
     switch (errorStatus) {
       case 409:
         return notification.error({ ...notFound });
+      case 404:
+        return notification.error({ ...notFound });
       case 'notFillingError':
         return notification.error({ ...notFillingError });
       default:

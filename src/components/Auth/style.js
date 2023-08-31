@@ -70,7 +70,7 @@ Wrapper.PasswordInput = styled(Input.Password)`
   color: rgb(89, 90, 98);
 `;
 
-Wrapper.Button = styled.div`
+Wrapper.Button = styled.button`
   margin-top: 50px;
   width: 80%;
   height: 50px;
@@ -108,5 +108,12 @@ Wrapper.Button = styled.div`
       transform: rotate(0deg) translate3d(0, 0, 0);
     }
   }
-  `}
+  `};
+`;
+
+Wrapper.Text = styled.span`
+  margin-left: 5px;
+
+  color: blue;
+  font-size: 16px;
 `;

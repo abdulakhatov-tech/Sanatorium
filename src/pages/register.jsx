@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import { Register } from '../components';
 
-import { Login } from '../components';
-
-const LoginPage = () => {
+const RegisterPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -14,13 +13,13 @@ const LoginPage = () => {
         <meta
           name="description"
           content={
-            t('meta_tag.login_page.description') || 'Here is Sign-In Page'
+            t('meta_tag.login_page.description') || 'Here is Sign-Up Page'
           }
         />
       </Helmet>
-      <Login />
+      <Register />
     </>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

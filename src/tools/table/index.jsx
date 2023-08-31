@@ -81,7 +81,6 @@ const Table = ({ data }) => {
         leftDay: 10,
       }
   );
-  console.log(changed);
 
   const columns = [
     {

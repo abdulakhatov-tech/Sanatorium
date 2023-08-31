@@ -7,7 +7,7 @@ export const UsersService = {
   // ------------------------------ Get All Users ------------------------------
   async getAllUsers() {
     const { data } = await $axios({
-      url: `${getUrl('users/all-users')}`,
+      url: getUrl('users/all-users'),
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ export const UsersService = {
   // ------------------------------ Get Half Time Users ------------------------------
   async getHalfTimeUsers() {
     const { data } = await $axios({
-      url: `${getUrl('users/half-time')}`,
+      url: getUrl('users/half-time'),
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ export const UsersService = {
   // ------------------------------ Get End Time Users ------------------------------
   async getEndTimeUsers() {
     const { data } = await $axios({
-      url: `${getUrl('users/half-time')}`,
+      url: getUrl('users/half-time'),
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

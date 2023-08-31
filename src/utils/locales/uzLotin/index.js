@@ -1,4 +1,75 @@
 const uzLotin = {
+  meta_tag: {
+    home_page: {
+      title: 'Sanatoriya',
+      description:
+        'Ushbu veb-sayt mijozlarni sanatoriyda qabul qilish, ularni xonalarga joylashtirish va bron qilish uchun ishlatiladi.',
+    },
+    all_users_page: {
+      title: 'Barcha mijozlar | Sanatoriya',
+      description: "Bu yerda biz barcha mijozlarni ko'rishimiz mumkin",
+    },
+    half_time_page: {
+      title: 'Yarim Vaqt | Sanatoriya',
+      description:
+        "Bu yerda biz barcha yarim vaqti qolgan mijozlarni ko'rishimiz mumkin",
+    },
+    end_time_page: {
+      title: 'Ketganlar | Sanatoriya',
+      description: "Bu yerda biz ketgan mijozlarni ko'rishimiz mumkin",
+    },
+    report_page: {
+      title: 'Hisobotlar | Sanatoriya',
+      description:
+        "Bu yerda biz mijozlar haqidagi barcha hisobotlarni ko'rishimiz mumkin",
+    },
+    building_types_page: {
+      title: 'Bino turlari | Sanatoriy',
+      description: "Bu yerda biz barcha bino turlarini ko'rishimiz mumkin.",
+    },
+    ordinary_rooms_page: {
+      title: 'Oddiy xonalar | Sanatoriya',
+      description: "Bu yerda biz barcha oddiy xonalarni ko'rishimiz mumkin.",
+    },
+    luxury_rooms_page: {
+      title: 'Hashamatli xonalar | Sanatoriya',
+      description:
+        "Bu yerda biz barcha hashamatli xonalarni ko'rishimiz mumkin",
+    },
+    cottages_page: {
+      title: 'Kottejlar | Sanatoriya',
+      description: "Bu yerda biz barcha kottejlarni ko'rishimiz mumkin",
+    },
+    building_2: {
+      title: '2-Bino | Sanatoriya',
+      description:
+        "Bu erda biz bir qavatli 2-binoning barcha oddiy xonalarini ko'rishimiz mumkin",
+    },
+    building_4: {
+      title: '4-Bino | Sanatoriya',
+      description:
+        "Bu yerda biz bir qavatli 4-binoning barcha oddiy xonalarini ko'rishimiz mumkin",
+    },
+    building_6: {
+      title: '6-Bino | Sanatoriya',
+      description:
+        "Bu yerda biz 3 qavatli 6-binoning barcha oddiy xonalarini ko'rishimiz mumkin",
+    },
+    building_3: {
+      title: '3-Bino | Sanatoriya',
+      description:
+        "Bu yerda biz bir qavatli 3-binoning barcha hashamatli xonalarini ko'rishimiz mumkin",
+    },
+    building_5: {
+      title: '5-Bino | Sanatoriya',
+      description:
+        "Bu yerda biz ikki qavatli 5-binoning barcha hashamatli xonalarini ko'rishimiz mumkin",
+    },
+    login_page: {
+      title: 'Auth | Sanatoriya',
+      description: 'Bu Kirish sahifasi',
+    },
+  },
   home_page: {
     title: "Bo'limlar",
     all_users_section: 'Barcha foydalanuvchilar',

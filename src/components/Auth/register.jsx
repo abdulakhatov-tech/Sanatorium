@@ -1,29 +1,31 @@
 // ------------------------------ External Imports ------------------------------
-import React, { useRef, useState } from 'react';
-import { useSignIn } from 'react-auth-kit';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LoadingOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
 
 // ------------------------------ Internal Imports ------------------------------
 import { Wrapper } from './style';
 import { useErrorNotifier } from '../../tools';
-import { useAxios } from '../../hooks/useAxios';
+import { formatPhoneNumber } from '../../helpers/auth.helper';
+import { AuthService } from '../../services/auth.service';
+import { useSignIn } from 'react-auth-kit';
 
-const Login = () => {
+const Register = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const signIn = useSignIn();
 
   /* ------------------- States ------------------- */
   const [warningAnimation, setWarningAnimation] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
+  const [loading, setLoading] = useState(false);
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const numberRef = useRef();
   const passwordRef = useRef();
 
   /* ------------------- Custom hooks ------------------- */
-  const axios = useAxios();
   const { errorNotifier } = useErrorNotifier();
 
   /* ------------------- To play Button animation ------------------- */
@@ -36,20 +38,24 @@ const Login = () => {
 
   /* ------------------- Keyboard detection ------------------- */
   const onKeyDetect = (e) => {
+    // navigate('/login');
+    // return;
     if (e.key === 'Enter' || e.type === 'click') return onAuth();
   };
 
-  /* ------------------- To check if the user signed up ------------------- */
   const onAuth = async () => {
     if (loading) return;
+
     var reg = new RegExp('^[0-9]$');
+    const firstName = firstNameRef.current.input.value;
+    const lastName = lastNameRef.current.input.value;
     const number = numberRef.current.input.value
       .split('')
       .filter((n) => reg.test(n))
       .join('');
     const password = passwordRef.current.input.value;
 
-    if (!password || !number) {
+    if (!firstName || !lastName || !password || !number) {
       playAnimation();
       errorNotifier({ errorStatus: 'notFillingError' });
       return;
@@ -57,23 +63,22 @@ const Login = () => {
 
     setLoading(true);
 
-    const response = await axios({
-      url: `/user/sign-in`,
-      method: 'POST',
-      body: {
-        password: password,
-        phoneNumber: '+998' + number,
-      },
-    });
+    const body = {
+      name: firstName,
+      surname: lastName,
+      password: password,
+      phoneNumber: '+998' + number,
+    };
 
+    const response = await AuthService.registerUser(body);
+
+    console.log(response.response.status, 'response');
     setLoading(false);
 
     if (response?.response?.status >= 400)
       return errorNotifier({ errorStatus: response?.response?.status });
 
     const { token, user } = response.data.data;
-
-    localStorage.setItem('token', token);
 
     signIn({
       token: token,
@@ -85,26 +90,6 @@ const Login = () => {
   };
 
   /* ------------------- Format User Phone Number ------------------- */
-  const formatPhoneNumber = (value) => {
-    if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, '');
-    const phoneNumberLength = phoneNumber.length;
-    if (phoneNumberLength < 3) return phoneNumber;
-    if (phoneNumberLength < 6) {
-      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
-    }
-    if (phoneNumberLength < 8) {
-      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(
-        2,
-        5
-      )}-${phoneNumber.slice(5, 7)}`;
-    }
-    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(
-      2,
-      5
-    )}-${phoneNumber.slice(5, 7)}-${phoneNumber.slice(7, 9)}`;
-  };
-
   const phoneNumberFormatter = (e) => {
     setFormattedPhoneNumber(formatPhoneNumber(e.target.value));
   };
@@ -114,6 +99,18 @@ const Login = () => {
       <Wrapper.Container>
         <Wrapper.Title>{t('login_page.title')}</Wrapper.Title>
         <Wrapper.Description>{t('login_page.description')}</Wrapper.Description>
+        <Wrapper.Input
+          ref={firstNameRef}
+          placeholder="First Name"
+          bordered={false}
+          type="text"
+        />
+        <Wrapper.Input
+          ref={lastNameRef}
+          placeholder="Last Name"
+          bordered={false}
+          type="text"
+        />
         <Wrapper.Input
           ref={numberRef}
           addonBefore="+998"
@@ -132,11 +129,17 @@ const Login = () => {
           warninganimation={warningAnimation.toString()}
           onClick={onKeyDetect}
         >
-          {loading ? <LoadingOutlined /> : t('login_page.button')}
+          {loading ? <LoadingOutlined /> : t('register_page.button')}
         </Wrapper.Button>
+        <p style={{ marginTop: 15 }}>
+          Have you already had an account?
+          <NavLink to="/login">
+            <Wrapper.Text>Sign-in</Wrapper.Text>
+          </NavLink>
+        </p>
       </Wrapper.Container>
     </Wrapper>
   );
 };
 
-export default Login;
+export default Register;

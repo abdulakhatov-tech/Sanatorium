@@ -12,3 +12,5 @@ export { default as ThirdBuildingPage } from './building-types/luxury-rooms/thir
 export { default as FifthBuildingPage } from './building-types/luxury-rooms/fifth-building';
 export { default as CottagesPage } from './building-types/cottages';
 export { default as ReportsPage } from './reports';
+export { default as RegisterPage } from './register';
+export { default as LoginPage } from './login';

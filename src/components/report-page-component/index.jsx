@@ -82,12 +82,12 @@ const ReportPageComponent = () => {
                   >
                     <RangePicker
                       disabled={loading ? true : false}
-                      onChange={(e) =>
-                        console.log(
-                          new Date(e[0].$d).getTime(),
-                          new Date(e[1].$d).getTime()
-                        )
-                      }
+                      // onChange={(e) =>
+                      //   console.log(
+                      //     new Date(e[0].$d).getTime(),
+                      //     new Date(e[1].$d).getTime()
+                      //   )
+                      // }
                     />
                   </Form.Item>
 
