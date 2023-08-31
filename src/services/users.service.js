@@ -4,6 +4,7 @@ import { $axios } from '../hooks/useAxios';
 const token = localStorage.getItem('token');
 
 export const UsersService = {
+  // ------------------------------ Get All Users ------------------------------
   async getAllUsers() {
     const { data } = await $axios({
       url: `${getUrl('users/all-users')}`,
@@ -16,7 +17,21 @@ export const UsersService = {
     return data;
   },
 
+  // ------------------------------ Get Half Time Users ------------------------------
   async getHalfTimeUsers() {
+    const { data } = await $axios({
+      url: `${getUrl('users/half-time')}`,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return data;
+  },
+
+  // ------------------------------ Get End Time Users ------------------------------
+  async getEndTimeUsers() {
     const { data } = await $axios({
       url: `${getUrl('users/half-time')}`,
       method: 'GET',

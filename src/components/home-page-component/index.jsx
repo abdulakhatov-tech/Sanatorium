@@ -11,15 +11,19 @@ import {
   report,
 } from '../../assets';
 import { Card } from '../../generic';
-import { CardWrapper, CenteredWrapper, Title } from '../../tools/styles';
-import { Wrapper } from './style';
+import {
+  CardWrapper,
+  CenteredWrapper,
+  Container,
+  Title,
+} from '../../tools/styles';
 
 const HomePageComponent = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
-    <Wrapper>
+    <Container>
       <CenteredWrapper>
         <Title>{t('home_page.title')}:</Title>
         <CardWrapper>
@@ -55,7 +59,7 @@ const HomePageComponent = () => {
           />
         </CardWrapper>
       </CenteredWrapper>
-    </Wrapper>
+    </Container>
   );
 };
 

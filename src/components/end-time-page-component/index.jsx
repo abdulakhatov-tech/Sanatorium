@@ -7,15 +7,13 @@ import { CenteredWrapper, Container } from '../../tools/styles';
 import { ArrowBack, Loading, Table } from '../../tools';
 import { UsersService } from '../../services/users.service';
 
-const AllUsersPageComponent = () => {
+const EndTimePageComponent = () => {
   const [users, setUsers] = useState([]);
 
-  /* ------------------- Get All Users ------------------- */
+  /* ------------------- Get End Time Users ------------------- */
   const { isLoading } = useQuery(
-    'getAllUsers',
-    () => {
-      return UsersService.getAllUsers();
-    },
+    'getEndTimeUsers',
+    () => UsersService.getEndTimeUsers(),
     {
       onSuccess: (res) => {
         setUsers(res?.data || []);
@@ -28,11 +26,11 @@ const AllUsersPageComponent = () => {
   return (
     <Container>
       <CenteredWrapper>
-        <ArrowBack translation={'home_page.all_users_section'} />
+        <ArrowBack translation={'home_page.up_users_section'} />
         {isLoading ? <Loading /> : <Table data={users} />}
       </CenteredWrapper>
     </Container>
   );
 };
 
-export default AllUsersPageComponent;
+export default EndTimePageComponent;

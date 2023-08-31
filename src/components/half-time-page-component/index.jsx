@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 
 // ------------------------------ Internal Imports ------------------------------
-import { Wrapper } from './style';
-import { CenteredWrapper } from '../../tools/styles';
+import { CenteredWrapper, Container } from '../../tools/styles';
 import { ArrowBack, Loading, Table } from '../../tools';
 import { UsersService } from '../../services/users.service';
 
@@ -27,12 +26,12 @@ const HalfTimePageComponent = () => {
   );
 
   return (
-    <Wrapper>
+    <Container>
       <CenteredWrapper>
-        <ArrowBack translation={'home_page.home_half_users_section'} />
+        <ArrowBack translation={'home_page.half_users_section'} />
         {isLoading ? <Loading /> : <Table data={users} />}
       </CenteredWrapper>
-    </Wrapper>
+    </Container>
   );
 };
 

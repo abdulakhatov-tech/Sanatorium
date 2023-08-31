@@ -1,7 +1,7 @@
-import React from 'react';
+import { EndTimePageComponent } from '../components';
 
 const EndTimePage = () => {
-  return <div>EndTimePage</div>;
+  return <EndTimePageComponent />;
 };
 
 export default EndTimePage;

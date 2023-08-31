@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { ReactComponent as arrow } from '../../assets/icons/arrow.svg';
 import { Tag } from 'antd';
 
+export const Container = styled.div`
+  width: 100%;
+`;
+
 export const Wrapper = styled.section`
   width: 100%;
   padding: 30px 30px;
