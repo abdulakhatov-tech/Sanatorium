@@ -1,7 +1,7 @@
-import React from 'react';
+import { BuildingTypesPageComponent } from '../components';
 
 const BuildingTypesPage = () => {
-  return <div>BuildingTypesPage</div>;
+  return <BuildingTypesPageComponent />;
 };
 
 export default BuildingTypesPage;
