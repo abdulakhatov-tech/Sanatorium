@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { AllUsersPageComponent } from '../components';
+import { AllUsersPageComponent } from '../page-components';
 
 const AllUsersPage = () => {
   const { t } = useTranslation();

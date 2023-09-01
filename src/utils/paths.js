@@ -7,10 +7,8 @@ import {
   FifthBuildingPage,
   FourthBuildingPage,
   HalfTimePage,
-  LoginPage,
   LuxuryRoomsPage,
   OrdinaryRoomsPage,
-  RegisterPage,
   ReportsPage,
   SecondBuildingPage,
   SixthBuildingPage,
@@ -46,7 +44,7 @@ export const paths = [
   {
     id: 5,
     Component: BuildingTypesPage,
-    path: '/building-control',
+    path: '/building-types',
     hasChild: true,
     children: [
       {
@@ -99,7 +97,7 @@ export const paths = [
       {
         id: 5.3,
         Component: CottagesPage,
-        path: 'map/cottage',
+        path: 'cottages',
         hasChild: false,
         children: [],
       },

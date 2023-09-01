@@ -1,7 +1,8 @@
 import { getUrl } from '../config/api.config';
+import { getCookie } from '../helpers/auth.helper';
 import { $axios } from '../hooks/useAxios';
 
-const token = localStorage.getItem('token');
+const token = getCookie('_auth');
 
 export const UsersService = {
   // ------------------------------ Get All Users ------------------------------

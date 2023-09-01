@@ -1,0 +1,11 @@
+export { default as Login } from './auth-page-component/login';
+export { default as Register } from './auth-page-component/register';
+export { default as HomePageComponent } from './home-page-component';
+export { default as AllUsersPageComponent } from './all-users-page-component';
+export { default as HalfTimePageComponent } from './half-time-page-component';
+export { default as EndTimePageComponent } from './end-time-page-component';
+export { default as ReportPageComponent } from './report-page-component';
+export { default as BuildingTypesPageComponent } from './building-types-page-component';
+export { default as CottagesPageComponent } from './building-types-page-component/cottages-page-component';
+export { default as OrdinaryRoomsPageComponent } from './building-types-page-component/ordinary-rooms-page-component';
+export { default as LuxuryRoomsPageComponent } from './building-types-page-component/luxury-rooms-page-component';

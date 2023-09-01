@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { EndTimePageComponent } from '../components';
+import { EndTimePageComponent } from '../page-components';
 
 const EndTimePage = () => {
   const { t } = useTranslation();

@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
+import { OrdinaryRoomsPageComponent } from '../../../page-components';
+
 const OrdinaryRoomsPage = () => {
   const { t } = useTranslation();
 
@@ -20,7 +22,7 @@ const OrdinaryRoomsPage = () => {
           }
         />
       </Helmet>
-      <h1>Ordinary Rooms</h1>
+      <OrdinaryRoomsPageComponent />
     </>
   );
 };

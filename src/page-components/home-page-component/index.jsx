@@ -25,7 +25,8 @@ const HomePageComponent = () => {
   return (
     <Container>
       <CenteredWrapper>
-        <Title>{t('home_page.title')}:</Title>
+        <Title>{t('home_page.title')}: </Title>
+
         <CardWrapper>
           <Card
             title={t('home_page.all_users_section')}
@@ -47,7 +48,7 @@ const HomePageComponent = () => {
           <Card
             title={t('home_page.available_places')}
             image={empty_place}
-            onClick={() => navigate('/building-control')}
+            onClick={() => navigate('/building-types')}
           />
         </CardWrapper>
         <Title>{t('home_page.report_title')}:</Title>

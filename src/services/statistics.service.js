@@ -1,7 +1,8 @@
 import { $axios } from '../hooks/useAxios';
 import { getUrl } from '../config/api.config';
+import { getCookie } from '../helpers/auth.helper';
 
-const token = localStorage.getItem('token');
+const token = getCookie('_auth');
 
 export const StatisticsService = {
   /* ------------------- Get Statistics ------------------- */

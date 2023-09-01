@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { BuildingTypesPageComponent } from '../../components';
+import { BuildingTypesPageComponent } from '../../page-components';
 
 const BuildingTypesPage = () => {
   const { t } = useTranslation();

@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
+import { LuxuryRoomsPageComponent } from '../../../page-components';
+
 const LuxuryRoomsPage = () => {
   const { t } = useTranslation();
 
@@ -19,7 +21,7 @@ const LuxuryRoomsPage = () => {
           }
         />
       </Helmet>
-      <h1>LuxuryRoomsPage</h1>
+      <LuxuryRoomsPageComponent />
     </>
   );
 };

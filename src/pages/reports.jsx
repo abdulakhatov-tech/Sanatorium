@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { ReportPageComponent } from '../components';
+import { ReportPageComponent } from '../page-components';
 
 const Reports = () => {
   const { t } = useTranslation();

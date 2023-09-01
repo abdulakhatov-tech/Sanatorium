@@ -18,6 +18,8 @@ const BuildingTypesPageComponent = () => {
   const outlet = useOutlet();
   const navigate = useNavigate();
 
+  const navigateHandler = (url) => navigate(`/building-types${url}`);
+
   return (
     <Container>
       <Wrapper>
@@ -29,19 +31,19 @@ const BuildingTypesPageComponent = () => {
                 <Card
                   title={t('building_control_page.ordinary_rooms')}
                   image={ordinary_room}
-                  onClick={() => navigate('/building-control/ordinary-rooms')}
+                  onClick={() => navigateHandler('/ordinary-rooms')}
                 />
                 <Card
                   title={t('building_control_page.luxury_rooms')}
                   image={luxury_room}
-                  onClick={() => navigate('/building-control/luxury-rooms')}
+                  onClick={() => navigateHandler('/luxury-rooms')}
                 />
               </CardWrapper>
               <CardWrapper>
                 <Card
                   title={t('building_control_page.cottages')}
                   image={mansion}
-                  onClick={() => navigate('/building-control/map/cottage')}
+                  onClick={() => navigateHandler('/cottages')}
                 />
               </CardWrapper>
             </>

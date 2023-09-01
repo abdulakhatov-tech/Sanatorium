@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { HalfTimePageComponent } from '../components';
+import { HalfTimePageComponent } from '../page-components';
 
 const HalfTimePage = () => {
   const { t } = useTranslation();

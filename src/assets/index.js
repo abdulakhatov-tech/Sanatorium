@@ -8,3 +8,4 @@ export { default as report } from './icons/report.svg';
 export { default as ordinary_room } from './icons/ordinary_room.svg';
 export { default as luxury_room } from './icons/luxury_room.svg';
 export { default as mansion } from './icons/mansion.svg';
+export { default as building } from './icons/building.svg';

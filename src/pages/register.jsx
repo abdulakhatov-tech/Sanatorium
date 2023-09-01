@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Register } from '../components';
+
+import { Register } from '../page-components';
 
 const RegisterPage = () => {
   const { t } = useTranslation();

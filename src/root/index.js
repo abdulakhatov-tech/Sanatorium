@@ -1,49 +1,24 @@
 // ------------------------------ External Imports ------------------------------
-import i18next from 'i18next';
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { RequireAuth } from 'react-auth-kit';
 import { Route, Routes } from 'react-router-dom';
-import { initReactI18next } from 'react-i18next';
 
 // ------------------------------ Internal Imports ------------------------------
+import { useI18Next } from '../i18n';
 import { paths } from '../utils/paths';
 import Navbar from '../components/Navbar';
 import { LoginPage, RegisterPage } from '../pages';
-import { en, ru, uzKrill, uzLotin } from '../utils/locales';
 
 const Root = () => {
-  const { lang } = useSelector((state) => state.locale);
-
+  // ------------------------------ Set default language to LocalStorage ------------------------------
   useEffect(() => {
     if (!localStorage.getItem('locale')) {
       localStorage.setItem('locale', 'en');
     }
   }, []);
 
-  i18next
-    .use(initReactI18next) // passes i18n down to react-i18next
-    .init({
-      resources: {
-        en: {
-          translation: en,
-        },
-        ru: {
-          translation: ru,
-        },
-        uzLotin: {
-          translation: uzLotin,
-        },
-        uzKrill: {
-          translation: uzKrill,
-        },
-      },
-      lng: lang,
-      fallback: lang,
-      interpolation: {
-        escapeValue: false, // react already safes from xss
-      },
-    });
+  // ------------------------------ Language config ------------------------------
+  useI18Next();
 
   return (
     <Routes>
