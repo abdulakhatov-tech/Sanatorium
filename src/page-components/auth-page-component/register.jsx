@@ -72,7 +72,6 @@ const Register = () => {
 
     const response = await AuthService.registerUser(body);
 
-    console.log(response.response.status, 'response');
     setLoading(false);
 
     if (response?.response?.status >= 400)

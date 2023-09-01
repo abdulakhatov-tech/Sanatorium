@@ -106,6 +106,7 @@ const uzLotin = {
     name: 'Ismi',
     surname: 'Familiya',
     version: 'versiya',
+    book: 'Bron qilish',
   },
 
   building_control_page: {
@@ -147,6 +148,7 @@ const uzLotin = {
   empty_places: {
     room: 'Xona',
     floor: 'Qavat',
+    confirm_empty_room: `Bu joy bo'sh. Yangi foydalanuvchi qo'shish uchun "Qo'shish" tugmasini bosing. Yoki bu joyni band qilish uchun «Kitoblash» tugmasini bosing.`,
   },
 
   reports_page: {

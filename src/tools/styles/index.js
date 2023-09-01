@@ -161,7 +161,7 @@ export const RoomTitle = styled.div`
   margin-top: 10px;
 `;
 
-export const ClienteWrapper = styled.div`
+export const ClientWrapper = styled.div`
   margin: 10px auto;
   width: 120px;
   display: flex;

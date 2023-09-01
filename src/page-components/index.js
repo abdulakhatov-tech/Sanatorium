@@ -9,3 +9,6 @@ export { default as BuildingTypesPageComponent } from './building-types-page-com
 export { default as CottagesPageComponent } from './building-types-page-component/cottages-page-component';
 export { default as OrdinaryRoomsPageComponent } from './building-types-page-component/ordinary-rooms-page-component';
 export { default as LuxuryRoomsPageComponent } from './building-types-page-component/luxury-rooms-page-component';
+export { default as SecondBuildingPageComponent } from './buildings/second-building-page-component';
+export { default as FourthBuildingPageComponent } from './buildings/fourth-building-page-component';
+export { default as SixthBuildingPageComponent } from './buildings/sixth-building-page-component';

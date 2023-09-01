@@ -105,6 +105,7 @@ const uzKrill = {
     name: 'Исми',
     surname: 'Фамилияси',
     version: 'версия',
+    book: 'Брон қилиш',
   },
   building_control_page: {
     title: 'Қурилиш турлари',
@@ -141,6 +142,8 @@ const uzKrill = {
   empty_places: {
     room: 'Хона',
     floor: 'Кават',
+    confirm_empty_room:
+      'Бу жой бўш. Янги фойдаланувчи қўшиш учун "Қўшиш" тугмасини босинг. Ёки бу жойни банд қилиш учун «Китоблаш» тугмасини босинг.',
   },
   reports_page: {
     date_range: 'Сана оралиғи',

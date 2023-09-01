@@ -102,6 +102,7 @@ const en = {
     name: 'Name',
     surname: 'Surname',
     version: 'version',
+    book: 'Book',
   },
   building_control_page: {
     title: 'Building types',
@@ -138,6 +139,8 @@ const en = {
   empty_places: {
     room: 'Room',
     floor: 'Floor',
+    confirm_empty_room:
+      'This place is empty. Click the «Add» button to add a new user. Or click to the «Book» button to book this place.',
   },
   reports_page: {
     date_range: 'Date range',
