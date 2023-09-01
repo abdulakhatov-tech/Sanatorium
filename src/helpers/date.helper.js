@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export const getNumberOfDays = (arg) => {
   const arrivalDate = +arg.arrivalDate;
   const endDate = +arg.endDate;
@@ -6,3 +8,5 @@ export const getNumberOfDays = (arg) => {
   const day = Math.round(millisecondDiff / aDayInMillisecond);
   return day;
 };
+
+export const leftDays = (date) => dayjs(new Date(+date)).diff(new Date(), 'd');

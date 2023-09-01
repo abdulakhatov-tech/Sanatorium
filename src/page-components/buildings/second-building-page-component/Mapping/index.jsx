@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
 import {
   CenteredWrapper,
   ClientWrapper,
@@ -7,16 +6,18 @@ import {
   MappingCardWrapper,
   RoomTitle,
   RoomWrapper,
-} from '../../../tools/styles';
+} from '../../../../tools/styles';
 import RoomComponent from './Room';
 import EmptyRoom from './EmptyRoom';
 import BookedRoom from './BookedRoom';
+import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 
 const Mapping = () => {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
 
-  const { data } = queryClient.getQueryData('accommodation/2');
+  const {
+    data: { data },
+  } = useGetQueryDataHandler({ queryKey: 'accommodation/2' });
 
   return (
     <CenteredWrapper>

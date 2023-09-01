@@ -1,27 +1,26 @@
 // ------------------------------ External Imports ------------------------------
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
 
 // ------------------------------ Internal Imports ------------------------------
 import { CenteredWrapper, Container } from '../../tools/styles';
 import { ArrowBack, Loading, Table } from '../../tools';
-import { UsersService } from '../../services/users.service';
+import useQueryHandler from '../../hooks/useQuery';
 
 const EndTimePageComponent = () => {
   const [users, setUsers] = useState([]);
 
   /* ------------------- Get End Time Users ------------------- */
-  const { isLoading } = useQuery(
-    'getEndTimeUsers',
-    () => UsersService.getEndTimeUsers(),
-    {
-      onSuccess: (res) => {
-        setUsers(res?.data || []);
-      },
-      refetchOnWindowFocus: false,
-      keepPreviousData: true,
+
+  const { isLoading, data } = useQueryHandler({
+    queryKey: 'get-time-up-users',
+    queryLink: '/users/time-up',
+  });
+
+  useEffect(() => {
+    if (!isLoading) {
+      setUsers(data?.data?.data);
     }
-  );
+  }, [isLoading, data]);
 
   return (
     <Container>

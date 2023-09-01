@@ -1,29 +1,25 @@
 // ------------------------------ External Imports ------------------------------
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
 
 // ------------------------------ Internal Imports ------------------------------
 import { CenteredWrapper, Container } from '../../tools/styles';
 import { ArrowBack, Loading, Table } from '../../tools';
-import { UsersService } from '../../services/users.service';
+import useQueryHandler from '../../hooks/useQuery';
 
 const AllUsersPageComponent = () => {
   const [users, setUsers] = useState([]);
 
   /* ------------------- Get All Users ------------------- */
-  const { isLoading } = useQuery(
-    'getAllUsers',
-    () => {
-      return UsersService.getAllUsers();
-    },
-    {
-      onSuccess: (res) => {
-        setUsers(res?.data || []);
-      },
-      refetchOnWindowFocus: false,
-      keepPreviousData: true,
+  const { isLoading, data } = useQueryHandler({
+    queryKey: 'get-all-users',
+    queryLink: '/users/all-users',
+  });
+
+  useEffect(() => {
+    if (!isLoading) {
+      setUsers(data?.data?.data);
     }
-  );
+  }, [isLoading, data]);
 
   return (
     <Container>
