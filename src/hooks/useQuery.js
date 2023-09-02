@@ -11,7 +11,8 @@ const useQueryHandler = ({ queryKey, queryLink, method, body }) => {
         url: queryLink,
         method,
         body,
-      }),
+      }).then((response) => response?.data?.data),
+
     {
       refetchOnWindowFocus: false,
       keepPreviousData: true,

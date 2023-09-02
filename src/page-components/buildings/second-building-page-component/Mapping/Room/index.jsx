@@ -30,7 +30,7 @@ const RoomComponent = ({ value: { userID } }) => {
         color="red"
         onClick={() => !isLoading && dispatch(setUserModalVisibility())}
       >
-        {isLoading ? <LoadingOutlined /> : leftDays(data.data.data.endDate)}
+        {isLoading ? <LoadingOutlined /> : leftDays(data.endDate)}
       </Room>
     </Tooltip>
   );

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+
 import {
   CenteredWrapper,
   ClientWrapper,
@@ -15,9 +16,17 @@ import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 const Mapping = () => {
   const { t } = useTranslation();
 
-  const {
-    data: { data },
-  } = useGetQueryDataHandler({ queryKey: 'accommodation/2' });
+  const data = useGetQueryDataHandler({ queryKey: 'accommodation/2' });
+
+  const statusChecker = (value) => {
+    if (value.isBooked) {
+      return <BookedRoom key={value.clienteID} />;
+    } else if (value.userID) {
+      return <RoomComponent key={value.clienteID} value={value} />;
+    } else {
+      return <EmptyRoom key={value.clienteID} />;
+    }
+  };
 
   return (
     <CenteredWrapper>
@@ -29,15 +38,7 @@ const Mapping = () => {
                 {room?.roomNumber} {t('empty_places.room')}
               </RoomTitle>
               <ClientWrapper>
-                {room?.cliente?.map((value) =>
-                  !value.isBooked && !value.userID ? (
-                    <EmptyRoom key={value.clienteID} />
-                  ) : value.userID ? (
-                    <RoomComponent key={value.clienteID} value={value} />
-                  ) : (
-                    <BookedRoom key={value.clienteID} />
-                  )
-                )}
+                {room?.cliente?.map((value) => statusChecker(value))}
               </ClientWrapper>
             </RoomWrapper>
           ))}
