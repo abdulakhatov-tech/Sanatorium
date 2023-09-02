@@ -165,6 +165,7 @@ const uzKrill = {
     observing: 'Кузатув',
     booked_user: 'Бронланган жойлар',
     edit: 'Ўзгартириш',
+    no_booked_places: 'Банд қилинган жойлар йўқ',
     observing_user: {
       full_name: 'Тўлиқ исм',
       birth_date: 'Туғулган сана',

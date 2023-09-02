@@ -172,6 +172,8 @@ const uzLotin = {
     observing: 'Kuzatuv',
     booked_user: 'Bronlangan joylar',
     edit: "O'zgartirish",
+
+    no_booked_places: "Band qilingan joylar yo'q",
     observing_user: {
       full_name: "To'liq ism",
       birth_date: "Tug'ulgan sana",

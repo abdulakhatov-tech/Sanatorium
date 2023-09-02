@@ -8,13 +8,14 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Wrapper } from './style';
 import { useErrorNotifier } from '../../tools';
 import { formatPhoneNumber } from '../../helpers/auth.helper';
-import { AuthService } from '../../services/auth.service';
 import { useSignIn } from 'react-auth-kit';
+import { useAxios } from '../../hooks';
 
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const signIn = useSignIn();
+  const axios = useAxios();
 
   /* ------------------- States ------------------- */
   const [warningAnimation, setWarningAnimation] = useState(false);
@@ -70,7 +71,11 @@ const Register = () => {
       phoneNumber: '+998' + number,
     };
 
-    const response = await AuthService.registerUser(body);
+    const response = await axios({
+      url: '/user/sign-up',
+      method: 'POST',
+      body: { ...body },
+    });
 
     setLoading(false);
 

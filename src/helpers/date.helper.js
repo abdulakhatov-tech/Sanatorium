@@ -10,3 +10,17 @@ export const getNumberOfDays = (arg) => {
 };
 
 export const leftDays = (date) => dayjs(new Date(+date)).diff(new Date(), 'd');
+
+export const formatDate = (date) => {
+  let day = dayjs(date).$D;
+  let month = dayjs(date).$M + 1;
+  let year = dayjs(date).$y;
+
+  if (day < 9) {
+    day = '0' + day;
+  } else if (month < 9) {
+    month = '0' + month;
+  }
+
+  return `${day}.${month}.${year}`;
+};

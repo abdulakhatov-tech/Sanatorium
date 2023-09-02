@@ -164,6 +164,7 @@ const ru = {
     observing: 'Наблюдение',
     booked_user: 'Забронированный пользователь',
     edit: 'Редактировать',
+    no_booked_places: 'Нет забронированных мест',
     observing_user: {
       full_name: 'Полное имя',
       birth_date: 'Дата рождения',

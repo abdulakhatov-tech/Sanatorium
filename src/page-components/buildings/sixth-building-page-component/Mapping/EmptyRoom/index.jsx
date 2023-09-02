@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import { Tooltip } from '../../../../../tools';
 import { Room } from '../../../../../tools/styles';
-import { useState } from 'react';
 
 const { confirm } = Modal;
 

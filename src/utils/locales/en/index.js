@@ -161,6 +161,7 @@ const en = {
     title: 'Information about user',
     observing: 'Observing',
     booked_user: 'Booked user',
+    no_booked_places: 'There is no any booked places',
     edit: 'Edit',
     observing_user: {
       full_name: 'Full name',

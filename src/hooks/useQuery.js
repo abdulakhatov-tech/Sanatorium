@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { useAxios } from './useAxios2';
+import useAxios from './useAxios';
 
 const useQueryHandler = ({ queryKey, queryLink, method, body }) => {
   const axios = useAxios();

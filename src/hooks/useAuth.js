@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useContext, createContext } from 'react';
+import { useState, useContext, createContext } from 'react';
 
 const { REACT_APP_BASE_URL } = process.env;
 

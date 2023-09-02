@@ -16,17 +16,20 @@ const RoomComponent = ({ value: { userID } }) => {
 
   const { isLoading, data } = useQueryHandler({
     queryKey: `user/${userID}`,
-    queryLink: `/accomodation/2/user?_id=${userID}`,
+    queryLink: `/accomodation/6-1/user?_id=${userID}`,
   });
 
-  const roomClickDetector = () => {
-    dispatch(setUserModalVisibility());
+  // set userID
+  useEffect(() => {
     dispatch(setUserID({ userID: userID }));
-  };
+  }, [userID, dispatch]);
 
   return (
     <Tooltip title={t('tooltip.busy_room')} color={'red'}>
-      <Room color="red" onClick={roomClickDetector}>
+      <Room
+        color="red"
+        onClick={() => !isLoading && dispatch(setUserModalVisibility())}
+      >
         {isLoading ? <LoadingOutlined /> : leftDays(data.endDate)}
       </Room>
     </Tooltip>

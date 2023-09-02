@@ -7,15 +7,15 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 // ------------------------------ Internal Imports ------------------------------
 import { Wrapper } from './style';
+import { useAxios } from '../../hooks';
 import { useErrorNotifier } from '../../tools';
 import { formatPhoneNumber } from '../../helpers/auth.helper';
-import { $$axios } from '../../hooks/useAxios';
-import { AuthService } from '../../services/auth.service';
 
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const signIn = useSignIn();
+  const axios = useAxios();
 
   /* ------------------- States ------------------- */
   const [warningAnimation, setWarningAnimation] = useState(false);
@@ -63,7 +63,11 @@ const Login = () => {
       phoneNumber: '+998' + number,
     };
 
-    const response = await AuthService.loginUser(body);
+    const response = await axios({
+      url: '/user/sign-in',
+      method: 'POST',
+      body: { ...body },
+    });
 
     setLoading(false);
 
