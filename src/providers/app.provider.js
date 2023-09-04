@@ -1,7 +1,6 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { ConfigProvider } from 'antd';
 import ru_RU from 'antd/locale/ru_RU';
+import { ConfigProvider } from 'antd';
+import { Provider } from 'react-redux';
 import { AuthProvider } from 'react-auth-kit';
 import { BrowserRouter } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';

@@ -1,17 +1,16 @@
 // ------------------------------ External Imports ------------------------------
-import { useTranslation } from 'react-i18next';
 import { Outlet, useOutlet } from 'react-router-dom';
 
 // ------------------------------ Internal Imports ------------------------------
 import { Card } from '../../../generic';
 import { building } from '../../../assets';
 import { ArrowBack } from '../../../tools';
-import useNavigation from '../../../hooks/useNavigation';
+import { useNavigation, useTranslation } from '../../../hooks';
 import { CardWrapper, CenteredWrapper, Wrapper } from '../../../tools/styles';
 
 const LuxuryRoomsPageComponent = () => {
-  const { t } = useTranslation();
   const outlet = useOutlet();
+  const { t } = useTranslation();
 
   const { $navigate } = useNavigation();
 

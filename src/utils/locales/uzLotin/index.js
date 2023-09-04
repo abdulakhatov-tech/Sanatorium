@@ -172,8 +172,9 @@ const uzLotin = {
     observing: 'Kuzatuv',
     booked_user: 'Bronlangan joylar',
     edit: "O'zgartirish",
-
     no_booked_places: "Band qilingan joylar yo'q",
+    room_is_empty:
+      "Xona bo'sh. Siz «Qo'shish» tugmasini bosish orqali yangi foydalanuvchi qo'shishingiz mumkin. Hech qanday band qilingan joy yo'q!",
     observing_user: {
       full_name: "To'liq ism",
       birth_date: "Tug'ulgan sana",

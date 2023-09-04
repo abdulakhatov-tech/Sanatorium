@@ -13,10 +13,12 @@ const { RangePicker } = DatePicker;
 const Edit = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { userID } = useSelector((state) => state.user);
+  const { selectedUser } = useSelector((state) => state.user);
   const { openNotificationWithIcon, contextHolder } = useMessageAPI();
 
-  const userData = useGetQueryDataHandler({ queryKey: `user/${userID}` });
+  const userData = useGetQueryDataHandler({
+    queryKey: `user/${selectedUser?.userID}`,
+  });
 
   // ===========================  FORM SUBMIT =================================
   const formSubmit = (e) => {

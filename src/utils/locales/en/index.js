@@ -162,6 +162,8 @@ const en = {
     observing: 'Observing',
     booked_user: 'Booked user',
     no_booked_places: 'There is no any booked places',
+    room_is_empty:
+      'Room is empty. You can add new user by clicking «Add»There is no any booked places!',
     edit: 'Edit',
     observing_user: {
       full_name: 'Full name',

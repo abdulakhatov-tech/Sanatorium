@@ -78,7 +78,7 @@ const useSegmented = () => {
           {t('information_about_user.booked_user') || t('local_modal.uzLotin')}
         </div>
       ),
-      value: 'Booked places',
+      value: 'BookedPlaces',
     },
     {
       label: (
@@ -86,7 +86,7 @@ const useSegmented = () => {
           {t('information_about_user.edit') || t('local_modal.uzLotin')}
         </div>
       ),
-      value: 'Edit',
+      value: 'Editing',
     },
   ];
 

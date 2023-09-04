@@ -1,12 +1,12 @@
 import { Button, List } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import {
   setMoveUserModalVisibility,
   setUserModalVisibility,
 } from '../../../../store/modalSlice';
 import { Btns, ObservingWrapper } from './style';
+import { useTranslation } from '../../../../hooks';
 import { userInfo } from '../../../../utils/constants';
 import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 
@@ -14,8 +14,10 @@ const Observing = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { userID } = useSelector((state) => state.user);
-  const data = useGetQueryDataHandler({ queryKey: `user/${userID}` });
+  const { selectedUser } = useSelector((state) => state.user);
+  const data = useGetQueryDataHandler({
+    queryKey: `user/${selectedUser?.userID}`,
+  });
 
   const confirmDeleteUserModal = () => {};
 

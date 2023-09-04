@@ -1,7 +1,7 @@
 // ------------------------------ External Imports ------------------------------
 import { useEffect } from 'react';
 import { RequireAuth } from 'react-auth-kit';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 // ------------------------------ Internal Imports ------------------------------
 import { useI18Next } from '../i18n';
@@ -54,7 +54,7 @@ const Root = () => {
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="*" element={<h1>Not found</h1>} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

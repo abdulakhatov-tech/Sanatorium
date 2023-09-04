@@ -5,7 +5,7 @@ import {
   setAddUserModalVisibility,
   setUserModalVisibility,
 } from '../../../../store/modalSlice';
-import { BookedPlacesImage, Container, Title } from './style';
+import { BookedPlacesImage, Container, Title } from '../style';
 import { useTranslation } from '../../../../hooks';
 import { Button } from '../../../../generic';
 
@@ -18,8 +18,8 @@ const BookedPlaces = () => {
       <CenteredWrapper>
         <BookedPlacesImage />
         <Title>
-          {t('information_about_user.no_booked_places') ||
-            'There is no any booked places!'}
+          {t('information_about_user.room_is_empty') ||
+            'Room is empty. You can add new user by clicking «Add»There is no any booked places!'}
         </Title>
       </CenteredWrapper>
 

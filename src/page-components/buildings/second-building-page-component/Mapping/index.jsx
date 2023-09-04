@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import {
   CenteredWrapper,
   ClientWrapper,
@@ -8,43 +6,61 @@ import {
   RoomTitle,
   RoomWrapper,
 } from '../../../../tools/styles';
-import RoomComponent from './Room';
+import Room from './Room';
 import EmptyRoom from './EmptyRoom';
 import BookedRoom from './BookedRoom';
+import { useTranslation } from '../../../../hooks';
+import { UserModal, BookedRoomModal } from '../../../../components';
 import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
+
+const statusChecker = (clienteValue, roomValue) => {
+  if (clienteValue.isBooked)
+    return (
+      <BookedRoom
+        key={clienteValue.clienteID}
+        clienteValue={clienteValue}
+        roomValue={roomValue}
+      />
+    );
+  else if (clienteValue.userID)
+    return (
+      <Room
+        key={clienteValue.clienteID}
+        clienteValue={clienteValue}
+        roomValue={roomValue}
+      />
+    );
+  else return <EmptyRoom key={clienteValue.clienteID} />;
+};
 
 const Mapping = () => {
   const { t } = useTranslation();
 
   const data = useGetQueryDataHandler({ queryKey: 'accommodation/2' });
 
-  const statusChecker = (value) => {
-    if (value.isBooked) {
-      return <BookedRoom key={value.clienteID} />;
-    } else if (value.userID) {
-      return <RoomComponent key={value.clienteID} value={value} />;
-    } else {
-      return <EmptyRoom key={value.clienteID} />;
-    }
-  };
-
   return (
-    <CenteredWrapper>
-      <MappingCard>
-        <MappingCardWrapper>
-          {data?.map((room) => (
-            <RoomWrapper key={room?._id}>
-              <RoomTitle>
-                {room?.roomNumber} {t('empty_places.room')}
-              </RoomTitle>
-              <ClientWrapper>
-                {room?.cliente?.map((value) => statusChecker(value))}
-              </ClientWrapper>
-            </RoomWrapper>
-          ))}
-        </MappingCardWrapper>
-      </MappingCard>
-    </CenteredWrapper>
+    <>
+      <CenteredWrapper>
+        <MappingCard>
+          <MappingCardWrapper>
+            {data?.map((roomValue) => (
+              <RoomWrapper key={roomValue?._id}>
+                <RoomTitle>
+                  {roomValue?.roomNumber} {t('empty_places.room')}
+                </RoomTitle>
+                <ClientWrapper>
+                  {roomValue?.cliente?.map((clienteValue) =>
+                    statusChecker(clienteValue, roomValue)
+                  )}
+                </ClientWrapper>
+              </RoomWrapper>
+            ))}
+          </MappingCardWrapper>
+        </MappingCard>
+      </CenteredWrapper>
+      <UserModal />
+      <BookedRoomModal />
+    </>
   );
 };
 
