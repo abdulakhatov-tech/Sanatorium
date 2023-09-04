@@ -1,16 +1,18 @@
 import { Modal } from 'antd';
-import { useTranslation } from 'react-i18next';
 
 import { Tooltip } from '../../../../../tools';
 import { Room } from '../../../../../tools/styles';
-import { useState } from 'react';
+import { useTranslation } from '../../../../../hooks';
+import { useDispatch } from 'react-redux';
+import { setAddUserModalVisibility } from '../../../../../store/modalSlice';
 
 const { confirm } = Modal;
 
 const EmptyRoom = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
-  const confirmModal = () => {
+  const onWarning = () => {
     return confirm({
       title: t('tooltip.empty_room') || 'Empty place',
       content:
@@ -19,11 +21,15 @@ const EmptyRoom = () => {
       okText: t('generic.add') || 'Add',
       cancelText: t('generic.book') || 'Book',
       closable: true,
+      onOk: () => {
+        dispatch(setAddUserModalVisibility());
+      },
     });
   };
+
   return (
     <Tooltip title={t('tooltip.empty_room')} color="green">
-      <Room color="green" onClick={confirmModal} />
+      <Room color="green" onClick={onWarning} />
     </Tooltip>
   );
 };

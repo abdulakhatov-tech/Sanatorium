@@ -13,18 +13,24 @@ const OccupiedRoom = ({ clienteValue, roomValue }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
+  // Get User Info
   const { isLoading, data } = useQueryHandler({
     queryKey: `user/${clienteValue?.userID}`,
     queryLink: `/accomodation/2/user?_id=${clienteValue?.userID}`,
   });
 
   const roomClickDetector = () => {
+    if (isLoading) return;
+
+    // Open User Modal
     dispatch(setUserModalVisibility());
+    // Set User Info
     dispatch(
       setSelectedUser({
         userID: clienteValue.userID,
         buildingMutation: '2',
-        clienteValue: clienteValue,
+        clienteValue,
+        roomValue,
       })
     );
   };

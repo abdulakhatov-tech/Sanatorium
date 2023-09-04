@@ -10,7 +10,6 @@ import Room from './Room';
 import EmptyRoom from './EmptyRoom';
 import BookedRoom from './BookedRoom';
 import { useTranslation } from '../../../../hooks';
-import { UserModal, BookedRoomModal } from '../../../../components';
 import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 
 const statusChecker = (clienteValue, roomValue) => {
@@ -39,28 +38,24 @@ const Mapping = () => {
   const data = useGetQueryDataHandler({ queryKey: 'accommodation/2' });
 
   return (
-    <>
-      <CenteredWrapper>
-        <MappingCard>
-          <MappingCardWrapper>
-            {data?.map((roomValue) => (
-              <RoomWrapper key={roomValue?._id}>
-                <RoomTitle>
-                  {roomValue?.roomNumber} {t('empty_places.room')}
-                </RoomTitle>
-                <ClientWrapper>
-                  {roomValue?.cliente?.map((clienteValue) =>
-                    statusChecker(clienteValue, roomValue)
-                  )}
-                </ClientWrapper>
-              </RoomWrapper>
-            ))}
-          </MappingCardWrapper>
-        </MappingCard>
-      </CenteredWrapper>
-      <UserModal />
-      <BookedRoomModal />
-    </>
+    <CenteredWrapper>
+      <MappingCard>
+        <MappingCardWrapper>
+          {data?.map((roomValue) => (
+            <RoomWrapper key={roomValue?._id}>
+              <RoomTitle>
+                {roomValue?.roomNumber} {t('empty_places.room')}
+              </RoomTitle>
+              <ClientWrapper>
+                {roomValue?.cliente?.map((clienteValue) =>
+                  statusChecker(clienteValue, roomValue)
+                )}
+              </ClientWrapper>
+            </RoomWrapper>
+          ))}
+        </MappingCardWrapper>
+      </MappingCard>
+    </CenteredWrapper>
   );
 };
 

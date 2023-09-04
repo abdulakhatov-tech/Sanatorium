@@ -1,34 +1,19 @@
-import dayjs from 'dayjs';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, DatePicker, Form, Input, InputNumber } from 'antd';
+import { DatePicker, Form, Input, InputNumber } from 'antd';
 
-import { Btns } from './style';
-import { useMessageAPI } from '../../../../tools';
-import { useTranslation } from '../../../../hooks';
-import { setUserModalVisibility } from '../../../../store/modalSlice';
-import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
+import { useTranslation } from '../../../../../hooks';
+import { ModalButtonsWrapper } from '../../../../../tools/styles';
+import { Button } from '../../../../../generic';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAddUserModalVisibility } from '../../../../../store/modalSlice';
 
 const { RangePicker } = DatePicker;
 
-const Edit = () => {
-  const dispatch = useDispatch();
+const VoucherUser = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const { selectedUser } = useSelector((state) => state.user);
-  const { openNotificationWithIcon, contextHolder } = useMessageAPI();
 
-  const userData = useGetQueryDataHandler({
-    queryKey: `user/${selectedUser?.userID}`,
-  });
-
-  // ===========================  FORM SUBMIT =================================
-  const formSubmit = (e) => {
-    // mutate(e, {
-    //   onSuccess: (res) => {
-    //     console.log(res, 'res');
-    //     openNotificationWithIcon('success');
-    //   },
-    // });
-  };
+  console.log(selectedUser, '-------');
 
   // ===========================  FORM ITEMS =================================
   const formItems = () => (
@@ -72,18 +57,6 @@ const Edit = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        label={t('information_about_user.edit_user.phone_number')}
-        name={'phoneNumber'}
-        rules={[
-          {
-            required: true,
-            message: t('information_about_user.edit_user.phone_number_error'),
-          },
-        ]}
-      >
-        <InputNumber style={{ width: '100%' }} type="text" addonBefore="+998" />
-      </Form.Item>
-      <Form.Item
         label={t('information_about_user.edit_user.address')}
         name={'address'}
         rules={[
@@ -94,6 +67,18 @@ const Edit = () => {
         ]}
       >
         <Input />
+      </Form.Item>
+      <Form.Item
+        label={t('information_about_user.edit_user.phone_number')}
+        name={'phoneNumber'}
+        rules={[
+          {
+            required: true,
+            message: t('information_about_user.edit_user.phone_number_error'),
+          },
+        ]}
+      >
+        <InputNumber style={{ width: '100%' }} type="text" addonBefore="+998" />
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.range_date')}
@@ -120,44 +105,36 @@ const Edit = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        label={t('information_about_user.edit_user.pay_by_cash')}
-        name={'paidByCash'}
-        rules={[
-          {
-            required: true,
-            message: t('information_about_user.edit_user.pay_by_cash_error'),
-          },
-        ]}
+        label={t('information_about_user.edit_user.building_number')}
+        name={'buildingNumber'}
       >
-        <Input />
+        <Input defaultValue={2} disabled />
       </Form.Item>
       <Form.Item
-        label={t('information_about_user.edit_user.pay_by_card')}
-        name={'paidByPlasticCard'}
-        rules={[
-          {
-            required: true,
-            message: t('information_about_user.edit_user.pay_by_card_error'),
-          },
-        ]}
+        label={t('information_about_user.edit_user.room_number')}
+        name={'roomNumber'}
       >
         <Input />
       </Form.Item>
-      <Btns>
-        <Button onClick={() => dispatch(setUserModalVisibility())}>
-          Cancel
+
+      <ModalButtonsWrapper>
+        <Button onClick={() => dispatch(setAddUserModalVisibility())}>
+          {t('generic.cancel')}
         </Button>
         <Button type="primary" htmlType="submit">
-          {t('generic.edit')}
+          {t('generic.add')}
         </Button>
-      </Btns>
+      </ModalButtonsWrapper>
     </>
   );
+
+  // ===========================  FORM SUBMIT =================================
+  const formSubmit = () => {};
 
   // ===========================  RENDER =================================
   return (
     <>
-      {contextHolder}
+      {/* {contextHolder} */}
       <Form
         labelCol={{}}
         wrapperCol={{}}
@@ -165,20 +142,6 @@ const Edit = () => {
         style={{
           maxWidth: 600,
           paddingTop: 20,
-        }}
-        initialValues={{
-          fullName: userData?.fullName,
-          birthDate: dayjs(Number(userData?.birthDate)),
-          arrivalDate: [
-            dayjs(Number(userData?.arrivalDate)),
-            dayjs(Number(userData?.endDate)),
-          ],
-          passportID: userData?.passportID,
-          phoneNumber: userData?.phoneNumber,
-          address: userData?.address,
-          dayCost: userData?.dayCost,
-          paidByCash: userData?.paidByCash || '0',
-          paidByPlasticCard: userData?.paidByPlasticCard || '0',
         }}
         onFinish={formSubmit}
       >
@@ -188,4 +151,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default VoucherUser;

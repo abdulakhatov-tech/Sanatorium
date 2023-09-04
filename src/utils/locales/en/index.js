@@ -168,7 +168,7 @@ const en = {
     observing_user: {
       full_name: 'Full name',
       birth_date: 'Birth date',
-      password_number: 'Password number',
+      password_number: 'Passport number',
       phone_number: 'Phone number',
       address: 'Address',
       came_date: 'Came date',
@@ -201,10 +201,10 @@ const en = {
     edit_user: {
       full_name: 'Full name',
       birth_date: 'Birth date',
-      password_number: 'Password number',
+      password_number: 'Passport number',
       phone_number: 'Phone number',
       address: 'Address',
-      range_date: 'Range date',
+      range_date: 'Date range',
       remaining_days: 'Remaining days',
       daily_price: 'Daily price',
       total_price: 'Total price',

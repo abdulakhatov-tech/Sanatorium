@@ -230,4 +230,5 @@ export const ModalButtonsWrapper = styled.div`
   align-items: center;
   gap: 15px;
   justify-content: flex-end;
+  margin: 5px 0px;
 `;

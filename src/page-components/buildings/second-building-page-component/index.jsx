@@ -1,10 +1,9 @@
-import { useTranslation } from 'react-i18next';
-
 import Mapping from './Mapping';
-import { UserModal } from '../../../components';
+import { useTranslation } from '../../../hooks';
 import { ArrowBack, Loading } from '../../../tools';
 import useQueryHandler from '../../../hooks/useQuery';
 import { CenteredWrapper } from '../../../tools/styles';
+import { AddUserModal, UserModal } from '../../../components';
 
 const SecondBuildingPageComponent = () => {
   const { t } = useTranslation();
@@ -17,7 +16,8 @@ const SecondBuildingPageComponent = () => {
   return (
     <CenteredWrapper>
       <ArrowBack translation={`2 ${t('building_control_page.building')}`} />
-      {/* <UserModal /> */}
+      <UserModal />
+      <AddUserModal />
 
       {isLoading ? <Loading /> : <Mapping />}
     </CenteredWrapper>

@@ -2,13 +2,27 @@ import { useState } from 'react';
 import { Segmented } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Editing from './Editing';
-import Observing from './Observing';
+import Editing from '../User/Editing';
+import Booking from '../User/Booking';
 import { ModalWrapper } from './style';
-import BookedPlaces from './BookedPlaces';
+import Observing from '../User/Observing';
 import { useSegmented } from '../../../tools';
 import { useTranslation } from '../../../hooks';
 import { setUserModalVisibility } from '../../../store/modalSlice';
+
+// Segmented checker
+const checker = (active) => {
+  switch (active) {
+    case 'Observing':
+      return <Observing />;
+    case 'Booking':
+      return <Booking />;
+    case 'Editing':
+      return <Editing />;
+    default:
+      return <Observing />;
+  }
+};
 
 const UserModal = () => {
   const { t } = useTranslation();
@@ -31,13 +45,7 @@ const UserModal = () => {
         onChange={(e) => setUserOption(e)}
         defaultValue="Observing"
       />
-      {userOption === 'Observing' ? (
-        <Observing />
-      ) : userOption === 'BookedPlaces' ? (
-        <BookedPlaces />
-      ) : (
-        <Editing />
-      )}
+      {checker(userOption)}
     </ModalWrapper>
   );
 };

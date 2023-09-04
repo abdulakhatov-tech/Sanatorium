@@ -3,20 +3,21 @@ import { useDispatch } from 'react-redux';
 import { Tooltip } from '../../../../../tools';
 import { Room } from '../../../../../tools/styles';
 import { useTranslation } from '../../../../../hooks';
-import { setBookedPlacesModalVisibility } from '../../../../../store/modalSlice';
 import { setSelectedUser } from '../../../../../store/userSlice';
+import { setUserModalVisibility } from '../../../../../store/modalSlice';
 
-const BookedRoom = ({ clienteValue }) => {
+const BookedRoom = ({ roomValue, clienteValue }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const roomClickDetector = () => {
-    dispatch(setBookedPlacesModalVisibility());
+    dispatch(setUserModalVisibility());
     dispatch(
       setSelectedUser({
-        userID: clienteValue.userID,
+        userID: clienteValue?.userID,
         buildingMutation: '2',
-        clienteValue: clienteValue,
+        clienteValue,
+        roomValue,
       })
     );
   };
