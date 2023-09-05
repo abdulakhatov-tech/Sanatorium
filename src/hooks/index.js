@@ -4,4 +4,3 @@ export { default as useNavigation } from './useNavigation';
 export { default as useMediaQuery } from './useMediaQuery';
 export { default as useTranslation } from './useTranslation';
 export { default as useGetQueryData } from './useGetQueryData';
-export { default as useUpdateUser } from './useQueryActions';

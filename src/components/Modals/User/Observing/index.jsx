@@ -1,4 +1,5 @@
 import { List } from 'antd';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -8,14 +9,15 @@ import {
 import { ObservingWrapper } from './style';
 import { Button } from '../../../../generic';
 import { useTranslation } from '../../../../hooks';
-import { userInfo } from '../../../../utils/constants';
+import useConstants from '../../../../utils/constants';
 import { ModalButtonsWrapper } from '../../../../tools/styles';
 import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 import EmptySpace from '../EmptySpace';
+import { useDeleteUser } from '../../../../hooks/useQueryActions';
 
 const ListRender = () => {
   const { t } = useTranslation();
-
+  const { userInfo } = useConstants();
   const { selectedUser } = useSelector((state) => state.user);
 
   const userData = useGetQueryDataHandler({
@@ -41,9 +43,24 @@ const ListRender = () => {
 const Observing = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { mutate } = useDeleteUser();
+  const [loading, setLoading] = useState(false);
   const { selectedUser } = useSelector((state) => state.user);
 
-  const confirmDeleteUserModal = () => {};
+  const deleteUserHandler = () => {
+    setLoading(true);
+    mutate({
+      body: {
+        roomNumber: selectedUser?.roomValue?.roomNumber,
+        clienteID: selectedUser?.clienteValue?.clienteID,
+        _id: selectedUser?.userID,
+      },
+    });
+    setTimeout(() => {
+      dispatch(setUserModalVisibility());
+      setLoading(false);
+    }, 2000);
+  };
 
   if (!selectedUser.userID) return <EmptySpace />;
 
@@ -51,16 +68,25 @@ const Observing = () => {
     <ObservingWrapper>
       <ListRender />
       <ModalButtonsWrapper>
-        <Button onClick={() => dispatch(setUserModalVisibility())}>
+        <Button
+          disabled={loading}
+          onClick={() => dispatch(setUserModalVisibility())}
+        >
           {t('generic.cancel')}
         </Button>
         <Button
+          disabled={loading}
           type="primary"
           onClick={() => dispatch(setMoveUserModalVisibility())}
         >
           {t('generic.move')}
         </Button>
-        <Button type="primary" danger onClick={confirmDeleteUserModal}>
+        <Button
+          type="primary"
+          danger
+          onClick={deleteUserHandler}
+          loading={loading}
+        >
           {t('generic.delete')}
         </Button>
       </ModalButtonsWrapper>

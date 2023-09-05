@@ -9,7 +9,7 @@ import { leftDays } from '../../../../../helpers/date.helper';
 import { setSelectedUser } from '../../../../../store/userSlice';
 import { setUserModalVisibility } from '../../../../../store/modalSlice';
 
-const OccupiedRoom = ({ clienteValue, roomValue }) => {
+const OccupiedRoom = ({ clienteValue, roomValue, buildingNumber }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const OccupiedRoom = ({ clienteValue, roomValue }) => {
     dispatch(
       setSelectedUser({
         userID: clienteValue.userID,
-        buildingMutation: '2',
+        buildingMutation: buildingNumber,
         clienteValue,
         roomValue,
       })

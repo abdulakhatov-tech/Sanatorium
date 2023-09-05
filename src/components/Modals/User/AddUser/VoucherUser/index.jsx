@@ -1,9 +1,12 @@
-import { DatePicker, Form, Input, InputNumber } from 'antd';
-
-import { useTranslation } from '../../../../../hooks';
-import { ModalButtonsWrapper } from '../../../../../tools/styles';
-import { Button } from '../../../../../generic';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { DatePicker, Form, Input, InputNumber, Select } from 'antd';
+
+import { Button } from '../../../../../generic';
+import { useTranslation } from '../../../../../hooks';
+import { useBuildingDetector } from '../../../../../tools';
+import { useAddUser } from '../../../../../hooks/useQueryActions';
+import { ModalButtonsWrapper } from '../../../../../tools/styles';
 import { setAddUserModalVisibility } from '../../../../../store/modalSlice';
 
 const { RangePicker } = DatePicker;
@@ -11,16 +14,39 @@ const { RangePicker } = DatePicker;
 const VoucherUser = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { mutate } = useAddUser();
   const { selectedUser } = useSelector((state) => state.user);
+  const { ordinaryUserBuildingOptions } = useBuildingDetector();
+  const [loading, setLoading] = useState(false);
 
-  console.log(selectedUser, '-------');
+  // ===========================  FORM SUBMIT =================================
+  const onFinish = (e) => {
+    setLoading(true);
+    const shouldAddData = {
+      ...e,
+      birthDate: new Date(e.birthDate.$d).getTime(),
+      arrivalDate: new Date(e.range[0].$d).getTime(),
+      endDate: new Date(e.range[1].$d).getTime(),
+      clienteID: selectedUser?.clienteValue?.clienteID,
+      hasVoucher: true,
+      roomID: selectedUser?.roomValue?._id,
+    };
+    delete shouldAddData.range;
+
+    mutate({ body: shouldAddData });
+
+    setTimeout(() => {
+      dispatch(setAddUserModalVisibility());
+      setLoading(false);
+    }, 2000);
+  };
 
   // ===========================  FORM ITEMS =================================
   const formItems = () => (
     <>
       <Form.Item
         label={t('information_about_user.edit_user.full_name')}
-        name={'fullName'}
+        name="fullName"
         rules={[
           {
             required: true,
@@ -32,7 +58,7 @@ const VoucherUser = () => {
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.birth_date')}
-        name={'birthDate'}
+        name="birthDate"
         rules={[
           {
             required: true,
@@ -44,7 +70,7 @@ const VoucherUser = () => {
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.password_number')}
-        name={'passportID'}
+        name="passportID"
         rules={[
           {
             required: true,
@@ -58,7 +84,7 @@ const VoucherUser = () => {
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.address')}
-        name={'address'}
+        name="address"
         rules={[
           {
             required: true,
@@ -70,7 +96,7 @@ const VoucherUser = () => {
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.phone_number')}
-        name={'phoneNumber'}
+        name="phoneNumber"
         rules={[
           {
             required: true,
@@ -82,7 +108,7 @@ const VoucherUser = () => {
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.range_date')}
-        name={'arrivalDate'}
+        name="range"
         rules={[
           {
             required: true,
@@ -93,12 +119,50 @@ const VoucherUser = () => {
         <RangePicker />
       </Form.Item>
       <Form.Item
-        label={t('information_about_user.edit_user.daily_price')}
-        name={'dayCost'}
+        label={t('information_about_user.add_user.voucher_cost')}
+        name="voucherCost"
         rules={[
           {
             required: true,
-            message: t('information_about_user.edit_user.daily_price_error'),
+            message: t('information_about_user.add_user.voucher_cost_error'),
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label={t('information_about_user.add_user.voucher_number')}
+        name="voucherNumber"
+        rules={[
+          {
+            required: true,
+            message: t('information_about_user.add_user.voucher_number_error'),
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label={t('information_about_user.add_user.work_place')}
+        name="workPlace"
+        rules={[
+          {
+            required: true,
+            message: t('information_about_user.add_user.work_place_error'),
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label={t('information_about_user.add_user.voucher_organization')}
+        name="voucherOrganization"
+        rules={[
+          {
+            required: true,
+            message: t(
+              'information_about_user.add_user.voucher_organization_error'
+            ),
           },
         ]}
       >
@@ -107,29 +171,31 @@ const VoucherUser = () => {
       <Form.Item
         label={t('information_about_user.edit_user.building_number')}
         name={'buildingNumber'}
+        rules={[{ required: true }]}
       >
-        <Input defaultValue={2} disabled />
+        <Select disabled options={ordinaryUserBuildingOptions} />
       </Form.Item>
       <Form.Item
         label={t('information_about_user.edit_user.room_number')}
         name={'roomNumber'}
+        rules={[{ required: true }]}
       >
-        <Input />
+        <Input disabled />
       </Form.Item>
 
       <ModalButtonsWrapper>
-        <Button onClick={() => dispatch(setAddUserModalVisibility())}>
+        <Button
+          disabled={loading}
+          onClick={() => dispatch(setAddUserModalVisibility())}
+        >
           {t('generic.cancel')}
         </Button>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           {t('generic.add')}
         </Button>
       </ModalButtonsWrapper>
     </>
   );
-
-  // ===========================  FORM SUBMIT =================================
-  const formSubmit = () => {};
 
   // ===========================  RENDER =================================
   return (
@@ -143,7 +209,11 @@ const VoucherUser = () => {
           maxWidth: 600,
           paddingTop: 20,
         }}
-        onFinish={formSubmit}
+        initialValues={{
+          buildingNumber: `building/${selectedUser?.buildingMutation}`,
+          roomNumber: selectedUser?.roomValue?.roomNumber,
+        }}
+        onFinish={onFinish}
       >
         {formItems()}
       </Form>

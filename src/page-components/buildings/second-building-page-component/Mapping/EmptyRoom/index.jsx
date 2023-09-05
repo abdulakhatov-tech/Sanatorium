@@ -5,10 +5,11 @@ import { Room } from '../../../../../tools/styles';
 import { useTranslation } from '../../../../../hooks';
 import { useDispatch } from 'react-redux';
 import { setAddUserModalVisibility } from '../../../../../store/modalSlice';
+import { setSelectedUser } from '../../../../../store/userSlice';
 
 const { confirm } = Modal;
 
-const EmptyRoom = () => {
+const EmptyRoom = ({ clienteValue, roomValue, buildingNumber }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -22,6 +23,14 @@ const EmptyRoom = () => {
       cancelText: t('generic.book') || 'Book',
       closable: true,
       onOk: () => {
+        dispatch(
+          setSelectedUser({
+            userID: clienteValue?.userID,
+            buildingMutation: buildingNumber,
+            clienteValue,
+            roomValue,
+          })
+        );
         dispatch(setAddUserModalVisibility());
       },
     });

@@ -5,9 +5,10 @@ import { Button, DatePicker, Form, Input, InputNumber } from 'antd';
 import EmptySpace from '../EmptySpace';
 import { useMessageAPI } from '../../../../tools';
 import { ModalButtonsWrapper } from '../../../../tools/styles';
-import { useTranslation, useUpdateUser } from '../../../../hooks';
+import { useTranslation } from '../../../../hooks';
 import { setUserModalVisibility } from '../../../../store/modalSlice';
 import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
+import { useUpdateUser } from '../../../../hooks/useQueryActions';
 
 const { RangePicker } = DatePicker;
 

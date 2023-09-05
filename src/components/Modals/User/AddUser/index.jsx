@@ -1,21 +1,24 @@
-import { Modal, Segmented } from 'antd';
 import { useState } from 'react';
-import OrdinaryUser from './OrdinaryUser';
-import VoucherUser from './VoucherUser';
+import { Modal, Segmented } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+
+import VoucherUser from './VoucherUser';
+import OrdinaryUser from './OrdinaryUser';
+import { useTranslation } from '../../../../hooks';
 import { setAddUserModalVisibility } from '../../../../store/modalSlice';
 
 const AddUser = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { addUserModalVisibility } = useSelector((state) => state.modal);
   const [modalType, setModalType] = useState('Ordinary');
 
   return (
     <Modal
-      title="Add User"
-      okText="Add"
+      title={t('information_about_user.add_user.title') || 'Add User'}
       open={addUserModalVisibility}
       onCancel={() => dispatch(setAddUserModalVisibility())}
+      footer={false}
     >
       <Segmented
         block

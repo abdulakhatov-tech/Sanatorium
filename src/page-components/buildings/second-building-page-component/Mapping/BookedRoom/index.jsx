@@ -6,7 +6,7 @@ import { useTranslation } from '../../../../../hooks';
 import { setSelectedUser } from '../../../../../store/userSlice';
 import { setUserModalVisibility } from '../../../../../store/modalSlice';
 
-const BookedRoom = ({ roomValue, clienteValue }) => {
+const BookedRoom = ({ roomValue, clienteValue, buildingNumber }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const BookedRoom = ({ roomValue, clienteValue }) => {
     dispatch(
       setSelectedUser({
         userID: clienteValue?.userID,
-        buildingMutation: '2',
+        buildingMutation: buildingNumber,
         clienteValue,
         roomValue,
       })
