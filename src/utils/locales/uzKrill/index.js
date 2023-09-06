@@ -89,6 +89,9 @@ const uzKrill = {
     setting: 'Созламалар',
     language: 'Тилни Ўзгартириш',
     logout: 'Тарк этиш',
+    detailed: 'Батафсил',
+    delete: 'Ўчириш',
+    edit: 'Таҳрирлаш',
   },
   generic: {
     cancel: 'Бекор қилиш',
@@ -185,6 +188,7 @@ const uzKrill = {
       payment_difference: 'Тўлов фарқи',
       building_number: 'Бино рақами',
       room_number: 'Хона рақами',
+      pre_paid: 'Олдиндан тўланган',
       delete_user: {
         title: 'Ишонч ҳосил қилинг!',
         content: 'Оʻчириш тасдиқлангач, бу амални ортга қайтариб боʻлмайди.',

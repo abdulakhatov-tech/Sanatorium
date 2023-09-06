@@ -90,6 +90,9 @@ const uzLotin = {
     setting: 'Sozlamalar',
     language: "Tilni o'zgartirish",
     logout: 'Chiqish',
+    detailed: 'Batafsil',
+    delete: "O'chirish",
+    edit: 'Tahrirlash',
   },
   generic: {
     cancel: 'Bekor qilish',
@@ -192,6 +195,7 @@ const uzLotin = {
       payment_difference: "To'lov farqi",
       building_number: 'Bino raqami',
       room_number: 'Xona raqami',
+      pre_paid: "Oldindan to'langan",
       delete_user: {
         title: 'Ishonch hosil qiling',
         content: 'Oʻchirish tasdiqlangach, bu amalni ortga qaytarib boʻlmaydi.',

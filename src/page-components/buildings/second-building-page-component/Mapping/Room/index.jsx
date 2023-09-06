@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, InfoCircleOutlined } from '@ant-design/icons';
 
 import { Tooltip } from '../../../../../tools';
 import { Room } from '../../../../../tools/styles';
@@ -36,11 +36,16 @@ const OccupiedRoom = ({ clienteValue, roomValue, buildingNumber }) => {
   };
 
   return (
-    <Tooltip title={t('tooltip.busy_room')} color={'red'}>
-      <Room color="red" onClick={roomClickDetector}>
-        {isLoading ? <LoadingOutlined /> : leftDays(data.endDate)}
-      </Room>
-    </Tooltip>
+    <Room color="red" onClick={roomClickDetector}>
+      {clienteValue?.isBooked && (
+        <Tooltip title="This place is booked">
+          <Room.Info color="yellow">
+            <InfoCircleOutlined />
+          </Room.Info>
+        </Tooltip>
+      )}
+      {isLoading ? <LoadingOutlined /> : leftDays(data.endDate)}
+    </Room>
   );
 };
 

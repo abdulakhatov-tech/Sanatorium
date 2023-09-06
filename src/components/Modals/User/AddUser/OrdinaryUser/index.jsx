@@ -145,7 +145,10 @@ const OrdinaryUser = () => {
       </Form.Item>
 
       <ModalButtonsWrapper>
-        <Button onClick={() => dispatch(setAddUserModalVisibility())}>
+        <Button
+          disabled={loading}
+          onClick={() => dispatch(setAddUserModalVisibility())}
+        >
           {t('generic.cancel')}
         </Button>
         <Button type="primary" htmlType="submit" loading={loading}>

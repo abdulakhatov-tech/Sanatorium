@@ -188,6 +188,21 @@ export const Room = styled(Tag)`
   border-radius: 12px;
 `;
 
+Room.Info = styled(Tag)`
+  cursor: pointer;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -15px;
+`;
+
 export const BookedTag = styled(Tag)`
   cursor: pointer;
   display: flex;

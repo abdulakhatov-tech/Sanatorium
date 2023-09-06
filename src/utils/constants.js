@@ -71,7 +71,42 @@ const useConstants = () => {
     },
   ];
 
-  return { userInfo };
+  const bookedUserDetailedInfo = (data) => [
+    {
+      title: 'information_about_user.observing_user.full_name',
+      content: data?.fullName,
+    },
+    {
+      title: 'information_about_user.observing_user.phone_number',
+      content: data?.phoneNumber,
+    },
+    {
+      title: 'information_about_user.observing_user.address',
+      content: data?.address,
+    },
+    {
+      title: 'information_about_user.observing_user.came_date',
+      content: formatDate(data?.arrivalDate),
+    },
+    {
+      title: 'information_about_user.observing_user.end_date',
+      content: formatDate(data?.endDate),
+    },
+    {
+      title: 'information_about_user.observing_user.pre_paid',
+      content: data?.prePaid,
+    },
+    {
+      title: 'information_about_user.observing_user.building_number',
+      content: decodeBuilding(data?.buildingNumber).label,
+    },
+    {
+      title: 'information_about_user.observing_user.room_number',
+      content: data?.roomNumber,
+    },
+  ];
+
+  return { userInfo, bookedUserDetailedInfo };
 };
 
 export default useConstants;

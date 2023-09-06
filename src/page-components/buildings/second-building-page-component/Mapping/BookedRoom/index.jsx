@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 
-import { Tooltip } from '../../../../../tools';
 import { Room } from '../../../../../tools/styles';
 import { useTranslation } from '../../../../../hooks';
 import { setSelectedUser } from '../../../../../store/userSlice';
@@ -22,11 +21,7 @@ const BookedRoom = ({ roomValue, clienteValue, buildingNumber }) => {
     );
   };
 
-  return (
-    <Tooltip title={t('tooltip.booked_room')} color={'blue'}>
-      <Room color="processing" onClick={roomClickDetector} />
-    </Tooltip>
-  );
+  return <Room color="processing" onClick={roomClickDetector} />;
 };
 
 export default BookedRoom;

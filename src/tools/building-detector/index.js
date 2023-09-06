@@ -46,12 +46,27 @@ const useBuildingDetector = () => {
           label: `2 ${t('building_control_page.building')}`,
           value: 'building/2',
         };
+      case 'building-2':
+        return {
+          label: `2 ${t('building_control_page.building')}`,
+          value: 'building/2',
+        };
       case 'building/3':
         return {
           label: `3 ${t('building_control_page.building')}`,
           value: 'building/3',
         };
+      case 'building-3':
+        return {
+          label: `3 ${t('building_control_page.building')}`,
+          value: 'building/3',
+        };
       case 'building/4':
+        return {
+          label: `4 ${t('building_control_page.building')}`,
+          value: 'building/4',
+        };
+      case 'building-4':
         return {
           label: `4 ${t('building_control_page.building')}`,
           value: 'building/4',

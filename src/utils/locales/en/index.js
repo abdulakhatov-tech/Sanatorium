@@ -86,6 +86,9 @@ const en = {
     setting: 'Settings',
     language: 'Change Language',
     logout: 'Log out',
+    detailed: 'Detailed',
+    delete: 'Delete',
+    edit: 'Edit',
   },
   generic: {
     cancel: 'Cancel',
@@ -182,6 +185,7 @@ const en = {
       payment_difference: 'Payment difference',
       building_number: 'Building number',
       room_number: 'Room number',
+      pre_paid: 'Prepaid',
       delete_user: {
         title: 'Make sure',
         content: 'This action cannot be undone after deleting!',

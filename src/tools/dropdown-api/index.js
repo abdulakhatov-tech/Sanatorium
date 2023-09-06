@@ -2,6 +2,9 @@ import {
   SettingOutlined,
   TranslationOutlined,
   LogoutOutlined,
+  FileSearchOutlined,
+  EditOutlined,
+  DeleteOutlined,
 } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { DropDownContentWrapper } from '../styles';
@@ -47,7 +50,36 @@ const useDropDown = () => {
     },
   ];
 
-  return { loginItems };
+  const bookedPlaceItems = ({ inDetail }) => [
+    {
+      label: (
+        <DropDownContentWrapper onClick={inDetail}>
+          {t('dropdown.detailed')}
+        </DropDownContentWrapper>
+      ),
+      key: '0',
+      icon: <FileSearchOutlined onClick={inDetail} style={customIconStyle} />,
+    },
+    {
+      label: (
+        <DropDownContentWrapper>{t('dropdown.edit')}</DropDownContentWrapper>
+      ),
+      key: '1',
+      icon: <EditOutlined style={customIconStyle} />,
+    },
+
+    {
+      label: (
+        <DropDownContentWrapper style={{ color: 'red' }}>
+          {t('dropdown.delete')}
+        </DropDownContentWrapper>
+      ),
+      key: '3',
+      icon: <DeleteOutlined style={{ ...customIconStyle, color: 'red' }} />,
+    },
+  ];
+
+  return { loginItems, bookedPlaceItems };
 };
 
 export default useDropDown;

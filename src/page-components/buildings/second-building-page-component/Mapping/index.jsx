@@ -14,18 +14,18 @@ import useGetQueryDataHandler from '../../../../hooks/useGetQueryData';
 import { useLocation } from 'react-router-dom';
 
 const statusChecker = (clienteValue, roomValue, buildingNumber) => {
-  if (clienteValue.isBooked)
+  if (clienteValue.userID || (clienteValue.userID && clienteValue.isBooked))
     return (
-      <BookedRoom
+      <Room
         key={clienteValue.clienteID}
         clienteValue={clienteValue}
         roomValue={roomValue}
         buildingNumber={buildingNumber}
       />
     );
-  else if (clienteValue.userID)
+  else if (clienteValue.isBooked)
     return (
-      <Room
+      <BookedRoom
         key={clienteValue.clienteID}
         clienteValue={clienteValue}
         roomValue={roomValue}

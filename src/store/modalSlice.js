@@ -11,6 +11,7 @@ const modalSlice = createSlice({
     moveUserModalVisibility: false,
     addUserModalVisibility: false,
     bookedPlacesModalVisibility: false,
+    bookedDetailedModalVisibility: false,
   },
   reducers: {
     setSettingModalVisibility(state) {
@@ -37,6 +38,10 @@ const modalSlice = createSlice({
     setBookedPlacesModalVisibility(state) {
       state.bookedPlacesModalVisibility = !state.bookedPlacesModalVisibility;
     },
+    setBookedDetailedModalVisibility(state) {
+      state.bookedDetailedModalVisibility =
+        !state.bookedDetailedModalVisibility;
+    },
   },
 });
 
@@ -49,5 +54,6 @@ export const {
   setMoveUserModalVisibility,
   setAddUserModalVisibility,
   setBookedPlacesModalVisibility,
+  setBookedDetailedModalVisibility,
 } = modalSlice.actions;
 export default modalSlice.reducer;

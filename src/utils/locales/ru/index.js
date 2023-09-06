@@ -88,6 +88,9 @@ const ru = {
     setting: 'Настройки',
     language: 'Сменить язык',
     logout: 'Выйти из системы',
+    detailed: 'Подробно',
+    delete: 'Удалить',
+    edit: 'Редактировать',
   },
   generic: {
     cancel: 'Отменить',
@@ -184,6 +187,7 @@ const ru = {
       payment_difference: 'Разница в оплате',
       building_number: 'Номер зданияr',
       room_number: 'Номер комнаты',
+      pre_paid: 'Предоплаченный',
       delete_user: {
         title: 'Убеждаться',
         content: 'Это действие нельзя отменить после удаления!',
