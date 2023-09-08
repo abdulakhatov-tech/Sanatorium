@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { AllUsersPageComponent } from '../page-components';
+import NewComers from '../components/AllUsers';
 
 const AllUsersPage = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const AllUsersPage = () => {
           }
         />
       </Helmet>
-      <AllUsersPageComponent />
+      <NewComers />
     </>
   );
 };

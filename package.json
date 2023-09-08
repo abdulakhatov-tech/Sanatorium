@@ -1,5 +1,5 @@
 {
-  "name": "sanatorium",
+  "name": "sanatoriya",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,8 +22,8 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.0.7",
-    "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

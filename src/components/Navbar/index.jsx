@@ -1,57 +1,77 @@
-// ------------------------------ External Imports ------------------------------
-import { Dropdown } from 'antd';
+import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useSignOut } from 'react-auth-kit';
+import { Avatar, Dropdown, Modal } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-// ------------------------------ Internal Imports ------------------------------
-// import Parameters from '../Reports/Parameters';
-import { LanguageModal, LogoutModal, SettingsModal } from '../Modals';
 import { Wrapper } from './style';
-import {
-  setLangModalVisibility,
-  setSettingModalVisibility,
-  setLogoutModalVisibility,
-} from '../../store/modalSlice';
-import { useDropDown } from '../../tools';
+import LocaleModal from './LocaleModal';
+import ProfileModal from './ProfileModal';
+import { useMenuAPI } from '../../Generic/MenuAPI';
+import { switchUserModalVisibility } from '../../redux/navbarSlice';
+import { switchLocaleModalVisibility } from '../../redux/modalSlice';
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const signOut = useSignOut();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { navbarMenuAPI } = useMenuAPI();
 
-  const { loginItems } = useDropDown();
-
-  /* ------------------- User Modal Functions ------------------- */
-  const settingHandler = () => dispatch(setSettingModalVisibility());
-  const languageHandler = () => dispatch(setLangModalVisibility());
-  const logoutHandler = () => dispatch(setLogoutModalVisibility());
+  const confirm = () => {
+    Modal.confirm({
+      title: t('homeLogOutWarning.title'),
+      content: t('homeLogOutWarning.content'),
+      okText: t('modal.modal_logout'),
+      cancelText: t('modal.modal_canceling'),
+      okButtonProps: {
+        style: { background: 'red' },
+      },
+      onOk: () => {
+        navigate('/login');
+        signOut();
+      },
+    });
+  };
 
   return (
-    <>
-      {/* ------------------- User Modal ------------------- */}
-      <SettingsModal />
-      <LogoutModal />
-      <LanguageModal />
-      {/* <Parameters /> */}
-      {/* ------------------- Navbar ------------------- */}
-      <Wrapper>
-        <Wrapper.Title onClick={() => navigate('/')}>Nihol</Wrapper.Title>
-        <Dropdown
-          menu={{
-            items: loginItems({
-              settingHandler,
-              languageHandler,
-              logoutHandler,
-            }),
-          }}
-          placement="bottomRight"
-          trigger={['click']}
-        >
-          <Wrapper.Avatar>I</Wrapper.Avatar>
-        </Dropdown>
-      </Wrapper>
-      {/* ------------------- Outlet ------------------- */}
+    <Wrapper>
+      <LocaleModal />
+      <ProfileModal />
+      <Wrapper.Container>
+        {/* <Wrapper.Logo src={logo} onClick={navigateHandle} /> */}
+        <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          Sanatorium
+        </span>
+        <Wrapper.ProfileWrapper>
+          <Dropdown
+            menu={{
+              items: navbarMenuAPI({
+                settingClickHandler: () =>
+                  dispatch(switchUserModalVisibility()),
+                logOutClickHandler: () => confirm(),
+                languageChangeHandler: () =>
+                  dispatch(switchLocaleModalVisibility()),
+              }),
+            }}
+            trigger={['click']}
+          >
+            <Avatar
+              style={{ background: '#f56a00', cursor: 'pointer' }}
+              size={{
+                xs: 24,
+                sm: 32,
+                md: 40,
+              }}
+            >
+              A
+            </Avatar>
+          </Dropdown>
+        </Wrapper.ProfileWrapper>
+      </Wrapper.Container>
       <Outlet />
-    </>
+    </Wrapper>
   );
 };
 

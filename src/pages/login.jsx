@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Login } from '../page-components';
+
+import Login from '../components/Login';
 
 const LoginPage = () => {
   const { t } = useTranslation();

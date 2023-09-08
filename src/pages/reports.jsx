@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { ReportPageComponent } from '../page-components';
+import Report from '../components/Report';
 
 const Reports = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const Reports = () => {
           }
         />
       </Helmet>
-      <ReportPageComponent />
+      <Report />
     </>
   );
 };

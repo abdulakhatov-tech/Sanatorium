@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { HomePageComponent } from '../page-components';
+import Home from '../components/Home';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -19,7 +19,7 @@ const HomePage = () => {
           }
         />
       </Helmet>
-      <HomePageComponent />
+      <Home />
     </>
   );
 };

@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-
-import { CottagesPageComponent } from '../../page-components';
+import Cottages from '../../components/Buildings/Cottage';
 
 const CottagesPage = () => {
   const { t } = useTranslation();
@@ -21,7 +20,7 @@ const CottagesPage = () => {
           }
         />
       </Helmet>
-      <CottagesPageComponent />
+      <Cottages />
     </>
   );
 };

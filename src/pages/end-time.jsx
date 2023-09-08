@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { EndTimePageComponent } from '../page-components';
+import TimeUp from '../components/TimeUp';
 
 const EndTimePage = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const EndTimePage = () => {
           }
         />
       </Helmet>
-      <EndTimePageComponent />
+      <TimeUp />
     </>
   );
 };

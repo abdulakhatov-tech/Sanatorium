@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { FourthBuildingPageComponent } from '../../../page-components';
+import FourthBuilding from '../../../components/Buildings/FourthBuilding';
 
 const FourthBuildingPage = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const FourthBuildingPage = () => {
           }
         />
       </Helmet>
-      <FourthBuildingPageComponent />
+      <FourthBuilding />
     </>
   );
 };

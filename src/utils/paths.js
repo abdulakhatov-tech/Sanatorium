@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+
 import {
   AllUsersPage,
   BuildingTypesPage,
@@ -14,99 +15,91 @@ import {
   SixthBuildingPage,
   ThirdBuildingPage,
 } from '../pages';
+
 const Home = lazy(() => import('../pages/home'));
 
 export const paths = [
   {
-    id: 1,
-    Component: Home,
+    _id: 0,
     path: '/',
+    RenderComp: Home,
     hasChild: false,
   },
   {
-    id: 2,
-    Component: AllUsersPage,
+    _id: 1,
     path: '/all-users',
+    RenderComp: AllUsersPage,
     hasChild: false,
   },
   {
-    id: 3,
-    Component: HalfTimePage,
-    path: '/half-time',
+    _id: 2,
+    path: '/middle-users',
+    RenderComp: HalfTimePage,
     hasChild: false,
   },
   {
-    id: 4,
-    Component: EndTimePage,
-    path: '/end-time',
+    _id: 3,
+    path: '/end-users',
+    RenderComp: EndTimePage,
     hasChild: false,
   },
   {
-    id: 5,
-    Component: BuildingTypesPage,
-    path: '/building-types',
+    _id: 4,
+    path: '/building-control',
+    RenderComp: BuildingTypesPage,
     hasChild: true,
     children: [
       {
-        id: 5.1,
-        Component: OrdinaryRoomsPage,
+        _id: 4.1,
         path: 'ordinary-rooms',
-        hasChild: true,
-        children: [
-          {
-            id: '5-1-1',
-            Component: SecondBuildingPage,
-            path: '2',
-            hasChild: false,
-          },
-          {
-            id: '5-1-2',
-            Component: FourthBuildingPage,
-            path: '4',
-            hasChild: false,
-          },
-          {
-            id: '5-1-3',
-            Component: SixthBuildingPage,
-            path: '6',
-            hasChild: false,
-          },
-        ],
+        RenderComp: OrdinaryRoomsPage,
       },
       {
-        id: 5.2,
-        Component: LuxuryRoomsPage,
+        _id: 4.2,
         path: 'luxury-rooms',
-        hasChild: true,
-        children: [
-          {
-            id: '5-2-1',
-            Component: ThirdBuildingPage,
-            path: '3',
-            hasChild: false,
-          },
-
-          {
-            id: '5-2-2',
-            Component: FifthBuildingPage,
-            path: '5',
-            hasChild: false,
-          },
-        ],
+        RenderComp: LuxuryRoomsPage,
       },
       {
-        id: 5.3,
-        Component: CottagesPage,
-        path: 'cottages',
-        hasChild: false,
-        children: [],
+        _id: 4.3,
+        path: 'cottage-rooms',
+        RenderComp: CottagesPage,
+      },
+      {
+        _id: 4.4,
+        path: 'map/ordinary-rooms/2',
+        RenderComp: SecondBuildingPage,
+      },
+      {
+        _id: 4.5,
+        path: 'map/luxury-rooms/3',
+        RenderComp: ThirdBuildingPage,
+      },
+      {
+        _id: 4.6,
+        path: 'map/ordinary-rooms/4',
+        RenderComp: FourthBuildingPage,
+      },
+      {
+        _id: 4.6,
+        path: 'map/luxury-rooms/5',
+        RenderComp: FifthBuildingPage,
+      },
+      {
+        _id: 4.6,
+        path: 'map/ordinary-rooms/6',
+        RenderComp: SixthBuildingPage,
+      },
+      {
+        _id: 4.6,
+        path: 'map/cottage',
+        RenderComp: CottagesPage,
       },
     ],
   },
   {
-    id: 6,
-    Component: ReportsPage,
+    _id: 5,
     path: '/report',
+    RenderComp: ReportsPage,
     hasChild: false,
   },
 ];

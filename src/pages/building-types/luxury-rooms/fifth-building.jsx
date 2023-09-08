@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
+import FifthBuilding from '../../../components/Buildings/FifthBuilding';
+
 const FifthBuildingPage = () => {
   const { t } = useTranslation();
 
@@ -19,7 +21,7 @@ const FifthBuildingPage = () => {
           }
         />
       </Helmet>
-      <h1>FifthBuildingPage</h1>
+      <FifthBuilding />
     </>
   );
 };

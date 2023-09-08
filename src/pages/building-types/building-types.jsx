@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { BuildingTypesPageComponent } from '../../page-components';
+import EmptyPlace from '../../components/BuildingTypes';
 
 const BuildingTypesPage = () => {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const BuildingTypesPage = () => {
           }
         />
       </Helmet>
-      <BuildingTypesPageComponent />
+      <EmptyPlace />
     </>
   );
 };
