@@ -13,10 +13,9 @@ const Booking = () => {
 
   const foundData = building[
     selectedUser?.roomValue?.roomOrder
-  ].bookedCliente.find((value) => value.bookedClienteID === cellID);
+  ]?.bookedCliente?.find((value) => value.bookedClienteID === cellID);
 
-  console.log(foundData?.bookedClienteList);
-
+  console.log(selectedUser, 'seee');
   return (
     <>
       {selectedUser?.clienteValue?.isBooked ? (

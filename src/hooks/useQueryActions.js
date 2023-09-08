@@ -69,6 +69,38 @@ const useDeleteUserFromCache = () => {
   };
 };
 
+// BookedUser cache
+const useDeleteBookedUserFromCache = () => {
+  const queryClient = useQueryClient();
+
+  return ({ userData, buildingNumber }) => {
+    queryClient.setQueryData(
+      `accommodation/${buildingNumber}`,
+      (oldQueryData) => {
+        return oldQueryData?.map((value) =>
+          String(value?.roomNumber) === String(userData?.roomNumber)
+            ? {
+                ...value,
+                bookedCliente: value?.bookedCliente?.map((bookedClienteValue) =>
+                  String(bookedClienteValue?.bookedClienteID) ===
+                  String(userData.clienteID)
+                    ? {
+                        ...bookedClienteValue,
+                        bookedClienteList:
+                          bookedClienteValue?.bookedClienteList?.filter(
+                            (id) => id !== userData?._id
+                          ),
+                      }
+                    : bookedClienteValue
+                ),
+              }
+            : value
+        );
+      }
+    );
+  };
+};
+
 // Mutation
 const useUpdateUser = () => {
   const axios = useAxios();
@@ -120,7 +152,7 @@ const useDeleteUser = () => {
       buildingNumber,
       userData: selectedUser,
     });
-    axios({
+    return axios({
       method: 'DELETE',
       url: `/accomodation/${buildingNumber}/delete-user`,
       body,
@@ -128,4 +160,22 @@ const useDeleteUser = () => {
   });
 };
 
-export { useUpdateUser, useAddUser, useDeleteUser };
+// Booked users
+const useDeleteBookedUser = () => {
+  const axios = useAxios();
+  const { selectedUser } = useSelector((state) => state.user);
+  const deleteBookedUserFromCache = useDeleteBookedUserFromCache();
+
+  const buildingNumber = selectedUser?.buildingMutation;
+
+  return useMutation(({ body }) => {
+    deleteBookedUserFromCache({ buildingNumber, userData: body });
+    return axios({
+      url: `/accomodation/${buildingNumber}/delete-booked-user`,
+      method: 'DELETE',
+      body,
+    });
+  });
+};
+
+export { useUpdateUser, useAddUser, useDeleteUser, useDeleteBookedUser };

@@ -6,14 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EllipsisOutlinedWrapper } from './style';
 import useDropDown from '../../../../../tools/dropdown-api';
 import useQueryHandler from '../../../../../hooks/useQuery';
-import { setBookedDetailedModalVisibility } from '../../../../../store/modalSlice';
+import {
+  setBookedDetailedModalVisibility,
+  setEditBookedModalVisibility,
+} from '../../../../../store/modalSlice';
 import DetailedModal from '../DetailedModal';
+import EditBookedModal from '../EditBookedModal';
+import { useDeleteBookedUser } from '../../../../../hooks/useQueryActions';
 // import { setBookedDetailedModalVisibility } from '../../../../../store/modalSlice';
 
 const BookedCard = ({ id }) => {
+  const dispatch = useDispatch();
   const { bookedPlaceItems } = useDropDown();
   const { selectedUser } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const { mutate } = useDeleteBookedUser();
 
   const { isLoading, data } = useQueryHandler({
     queryKey: `booked-user/${id}`,
@@ -23,6 +29,7 @@ const BookedCard = ({ id }) => {
   return (
     <>
       <DetailedModal id={id} />
+      <EditBookedModal id={id} />
       <Card
         loading={isLoading}
         style={{ marginTop: '10px', marginBottom: '5px' }}
@@ -35,6 +42,16 @@ const BookedCard = ({ id }) => {
               menu={{
                 items: bookedPlaceItems({
                   inDetail: () => dispatch(setBookedDetailedModalVisibility()),
+                  editBookedModal: () =>
+                    dispatch(setEditBookedModalVisibility()),
+                  onDelete: () =>
+                    mutate({
+                      body: {
+                        _id: data?._id,
+                        clienteID: data?.clienteID,
+                        roomNumber: data?.roomNumber,
+                      },
+                    }),
                 }),
               }}
             >

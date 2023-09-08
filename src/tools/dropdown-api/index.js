@@ -50,7 +50,7 @@ const useDropDown = () => {
     },
   ];
 
-  const bookedPlaceItems = ({ inDetail }) => [
+  const bookedPlaceItems = ({ inDetail, editBookedModal, onDelete }) => [
     {
       label: (
         <DropDownContentWrapper onClick={inDetail}>
@@ -62,20 +62,27 @@ const useDropDown = () => {
     },
     {
       label: (
-        <DropDownContentWrapper>{t('dropdown.edit')}</DropDownContentWrapper>
+        <DropDownContentWrapper onClick={editBookedModal}>
+          {t('dropdown.edit')}
+        </DropDownContentWrapper>
       ),
       key: '1',
-      icon: <EditOutlined style={customIconStyle} />,
+      icon: <EditOutlined onClick={editBookedModal} style={customIconStyle} />,
     },
 
     {
       label: (
-        <DropDownContentWrapper style={{ color: 'red' }}>
+        <DropDownContentWrapper onClick={onDelete} style={{ color: 'red' }}>
           {t('dropdown.delete')}
         </DropDownContentWrapper>
       ),
       key: '3',
-      icon: <DeleteOutlined style={{ ...customIconStyle, color: 'red' }} />,
+      icon: (
+        <DeleteOutlined
+          onClick={onDelete}
+          style={{ ...customIconStyle, color: 'red' }}
+        />
+      ),
     },
   ];
 
