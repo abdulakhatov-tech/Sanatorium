@@ -66,7 +66,7 @@ const Navbar = () => {
                 md: 40,
               }}
             >
-              {user()?.name[0] + '.' + user()?.surname[0]}
+              {user()?.name[0]}
             </Avatar>
           </Dropdown>
         </Wrapper.ProfileWrapper>
