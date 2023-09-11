@@ -5,13 +5,13 @@ import { initReactI18next } from 'react-i18next';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { RequireAuth, useIsAuthenticated } from 'react-auth-kit';
 
+import Error from '../pages/error';
 import { paths } from '../utils/paths';
 import { en } from '../utils/locales/en';
 import { ru } from '../utils/locales/ru';
 import Navbar from '../components/Navbar';
 import { uzKrill } from '../utils/locales/uzb (krill)';
 import { uzLotin } from '../utils/locales/uzb (lotin)';
-import Error from '../pages/error';
 
 // const Error = lazy(() => import('../components/Error'));
 const Login = lazy(() => import('../pages/login'));
@@ -22,8 +22,7 @@ const Root = () => {
   const isAuthenticated = useIsAuthenticated();
 
   useEffect(() => {
-    if (!localStorage.getItem('locale'))
-      localStorage.setItem('locale', 'uzLotin');
+    if (!localStorage.getItem('locale')) localStorage.setItem('locale', 'en');
   }, []);
 
   i18n.use(initReactI18next).init({
