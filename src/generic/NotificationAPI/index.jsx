@@ -27,8 +27,10 @@ export const response409Error = {
 
 export const useResponseErrorChecker = () => {
   const notification = useNotification();
+
   return (res) => {
     const { response } = res;
+
     switch (response.status) {
       case 404:
         return notification(response404Error);

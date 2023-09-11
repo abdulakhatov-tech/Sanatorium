@@ -213,6 +213,9 @@ export const en = {
     deleteTitle: 'Make sure!',
     deleteContent: 'This action cannot be undone after deleting!',
     noBookedPlaces: 'There is no any booked places!',
+    are_you_sure: 'Are you sure?',
+    sure_content: 'What do you want to move the user?',
+    sure: "I'm sure",
   },
   commonBooking: {
     addModal: {

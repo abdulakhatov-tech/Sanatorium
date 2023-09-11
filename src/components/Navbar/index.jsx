@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useSignOut } from 'react-auth-kit';
+import { useAuthUser, useSignOut } from 'react-auth-kit';
 import { Avatar, Dropdown, Modal } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,7 @@ import { switchUserModalVisibility } from '../../redux/navbarSlice';
 import { switchLocaleModalVisibility } from '../../redux/modalSlice';
 
 const Navbar = () => {
+  const user = useAuthUser();
   const { t } = useTranslation();
   const signOut = useSignOut();
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const Navbar = () => {
                 md: 40,
               }}
             >
-              A
+              {user()?.name[0] + '.' + user()?.surname[0]}
             </Avatar>
           </Dropdown>
         </Wrapper.ProfileWrapper>

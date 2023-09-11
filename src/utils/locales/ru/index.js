@@ -215,6 +215,9 @@ export const ru = {
     deleteTitle: 'Убеждаться!',
     deleteContent: 'Это действие нельзя отменить после удаления!',
     noBookedPlaces: 'Забронированных мест нет!',
+    are_you_sure: 'Вы уверены ?',
+    sure_content: 'Что вы хотите переместить пользователя?',
+    sure: 'Я уверен',
   },
   commonBooking: {
     addModal: {

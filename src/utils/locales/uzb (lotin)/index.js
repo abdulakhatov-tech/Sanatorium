@@ -217,6 +217,9 @@ export const uzLotin = {
     deleteContent:
       'Oʻchirish tasdiqlangach, bu amalni ortga qaytarib boʻlmaydi.',
     noBookedPlaces: 'Bronlangan joylar mavjud emas!',
+    are_you_sure: 'Ishonchingiz komilmi?',
+    sure_content: "Foydalanuvchini qayerga ko'chirmoqchisiz?",
+    sure: 'Ishonchim komil',
   },
   commonBooking: {
     addModal: {

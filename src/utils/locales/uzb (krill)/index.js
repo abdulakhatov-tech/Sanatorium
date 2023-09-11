@@ -216,6 +216,9 @@ export const uzKrill = {
     deleteTitle: 'Ишонч ҳосил қилинг!',
     deleteContent: 'Оʻчириш тасдиқлангач, бу амални ортга қайтариб боʻлмайди.',
     noBookedPlaces: 'Бронланган жойлар мавжуд емас!',
+    are_you_sure: 'Ишончингиз комилми?',
+    sure_content: 'Фойдаланувчини қайерга кўчирмоқчисиз?',
+    sure: 'Ишончим комил',
   },
   commonBooking: {
     addModal: {
@@ -249,6 +252,12 @@ export const uzKrill = {
     observing: 'Кузатув',
     booking: 'Бронланган жойлар',
     editing: 'Ўзгартириш',
+  },
+
+  emptyRoom: {
+    subTitle:
+      'Хона бўш. «Қўшиш» тугмасини босиш орқали янги фойдаланувчи қўшишингиз мумкин.',
+    button: 'Қўшиш',
   },
   error: {
     title: 'Вой! Нимадир нотўғри бажарилди!',
